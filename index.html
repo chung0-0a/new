@@ -2,16 +2,116 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>日本語クイズ | 일본어 퀴즈 게임</title>
   <link rel="stylesheet" href="styles.css">
-  <title>Lotto Number Generator</title>
 </head>
 <body>
-  <div class="container">
-    <h1>로또 번호 추첨기</h1>
-    <button id="generateButton">번호 만들기</button>
-    <div id="result"></div>
+  <!-- 시작 화면 -->
+  <div id="screen-start" class="screen active">
+    <div class="start-container">
+      <div class="logo">🇯🇵</div>
+      <h1 class="game-title">日本語クイズ</h1>
+      <p class="game-subtitle">일본어 퀴즈 게임</p>
+      <div class="mode-buttons">
+        <button class="mode-btn" data-mode="hiragana">
+          <span class="mode-icon">あ</span>
+          <span class="mode-name">히라가나</span>
+          <span class="mode-desc">あいうえお 읽기</span>
+        </button>
+        <button class="mode-btn" data-mode="katakana">
+          <span class="mode-icon">ア</span>
+          <span class="mode-name">가타카나</span>
+          <span class="mode-desc">アイウエオ 읽기</span>
+        </button>
+        <button class="mode-btn" data-mode="vocab">
+          <span class="mode-icon">📖</span>
+          <span class="mode-name">기초 단어</span>
+          <span class="mode-desc">일상 어휘 퀴즈</span>
+        </button>
+        <button class="mode-btn" data-mode="mixed">
+          <span class="mode-icon">🎯</span>
+          <span class="mode-name">종합 도전</span>
+          <span class="mode-desc">모든 유형 혼합</span>
+        </button>
+      </div>
+      <div class="best-score-display" id="best-scores"></div>
+    </div>
   </div>
+
+  <!-- 게임 화면 -->
+  <div id="screen-game" class="screen">
+    <div class="game-header">
+      <button id="btn-exit" class="icon-btn">✕</button>
+      <div class="header-info">
+        <div class="score-display">
+          <span class="score-label">점수</span>
+          <span id="score" class="score-value">0</span>
+        </div>
+        <div class="streak-display" id="streak-display">
+          <span id="streak-text">🔥 0</span>
+        </div>
+      </div>
+      <div class="lives-display" id="lives-display">
+        <span class="heart">❤️</span>
+        <span class="heart">❤️</span>
+        <span class="heart">❤️</span>
+      </div>
+    </div>
+
+    <div class="progress-bar-wrap">
+      <div id="progress-bar" class="progress-bar"></div>
+    </div>
+
+    <div class="question-area">
+      <div id="question-type" class="question-type-label"></div>
+      <div id="question-char" class="question-char"></div>
+      <div id="question-hint" class="question-hint"></div>
+    </div>
+
+    <div id="timer-ring" class="timer-ring">
+      <svg viewBox="0 0 100 100">
+        <circle class="timer-bg" cx="50" cy="50" r="44"/>
+        <circle id="timer-arc" class="timer-arc" cx="50" cy="50" r="44"/>
+      </svg>
+      <span id="timer-num" class="timer-num">10</span>
+    </div>
+
+    <div id="choices" class="choices-grid"></div>
+
+    <div id="feedback" class="feedback hidden">
+      <span id="feedback-icon"></span>
+      <span id="feedback-text"></span>
+    </div>
+  </div>
+
+  <!-- 결과 화면 -->
+  <div id="screen-result" class="screen">
+    <div class="result-container">
+      <div id="result-emoji" class="result-emoji"></div>
+      <h2 id="result-title" class="result-title"></h2>
+      <div class="result-stats">
+        <div class="stat-box">
+          <div class="stat-value" id="res-score">0</div>
+          <div class="stat-label">점수</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="res-correct">0</div>
+          <div class="stat-label">정답</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="res-streak">0</div>
+          <div class="stat-label">최고 연속</div>
+        </div>
+      </div>
+      <div id="new-best" class="new-best hidden">🏆 최고 기록 갱신!</div>
+      <div class="result-buttons">
+        <button id="btn-retry" class="result-btn primary">다시 도전</button>
+        <button id="btn-home" class="result-btn secondary">홈으로</button>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
