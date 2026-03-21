@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- Pretendard -->
+  <link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
   <link rel="stylesheet" href="styles.css">
   <title>Truth or Dare</title>
 </head>
 <body>
-<div class="app">
+<div class="app" data-theme="dark">
 
   <!-- ═══════════════════════════════════
        SPLASH
@@ -31,12 +31,12 @@
   <!-- ═══════════════════════════════════
        ONBOARDING 1 — 게임 소개 (DEMO)
   ═══════════════════════════════════ -->
-  <div id="screen-ob1" class="screen">
+  <div id="screen-ob1" class="screen ob-screen" data-ob="0">
     <div class="screen-inner light">
 
       <div class="top-nav">
         <div class="nav-spacer"></div>
-        <button class="btn-skip" onclick="App.go('screen-setup')">
+        <button class="btn-skip" onclick="App.go('screen-ad')">
           <img class="skip-icon"
             src="https://www.figma.com/api/mcp/asset/e3939be8-8062-4a8c-b5c9-025c8cfd05ec" alt="">
           Skip
@@ -68,7 +68,7 @@
         <div class="page-dots">
           <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
         </div>
-        <button class="btn-primary" onclick="App.go('screen-ob2')">다음</button>
+        <button class="btn-primary" onclick="App.obGo(1, 'left')">다음</button>
       </div>
 
     </div>
@@ -77,14 +77,14 @@
   <!-- ═══════════════════════════════════
        ONBOARDING 2 — 플레이어 예시 (STATIC DEMO)
   ═══════════════════════════════════ -->
-  <div id="screen-ob2" class="screen">
-    <div class="screen-inner light">
+  <div id="screen-ob2" class="screen ob-screen" data-ob="1">
+    <div class="screen-inner dark">
 
       <div class="top-nav">
-        <button class="btn-back" onclick="App.go('screen-ob1')">
+        <button class="btn-back inverted" onclick="App.obGo(0, 'right')">
           <img src="https://www.figma.com/api/mcp/asset/9d9fed32-bad7-4cec-aaf3-71eea97ae48d" alt="뒤로">
         </button>
-        <button class="btn-skip" onclick="App.go('screen-setup')">
+        <button class="btn-skip" onclick="App.go('screen-ad')">
           <img class="skip-icon"
             src="https://www.figma.com/api/mcp/asset/e45131fe-0e66-4d26-868e-34a4c0cb9c48" alt="">
           Skip
@@ -114,7 +114,7 @@
         </div>
         <div class="ob-text">
           <p class="ob-title">Put Your Name!</p>
-          <p class="ob-desc">플러스 버튼을 누르고 참여자의 이름을<br>입력하여 플레이어를 추가하세요!</p>
+          <p class="ob-desc ob-desc-white">플러스 버튼을 누르고 참여자의 이름을<br>입력하여 플레이어를 추가하세요!</p>
         </div>
       </div>
 
@@ -122,7 +122,7 @@
         <div class="page-dots">
           <span class="dot"></span><span class="dot active"></span><span class="dot"></span>
         </div>
-        <button class="btn-primary" onclick="App.go('screen-ob3')">다음</button>
+        <button class="btn-primary" onclick="App.obGo(2, 'left')">다음</button>
       </div>
 
     </div>
@@ -131,14 +131,14 @@
   <!-- ═══════════════════════════════════
        ONBOARDING 3 — Truth/Dare 예시 (STATIC DEMO)
   ═══════════════════════════════════ -->
-  <div id="screen-ob3" class="screen">
-    <div class="screen-inner light">
+  <div id="screen-ob3" class="screen ob-screen" data-ob="2">
+    <div class="screen-inner dark">
 
       <div class="top-nav">
-        <button class="btn-back" onclick="App.go('screen-ob2')">
+        <button class="btn-back inverted" onclick="App.obGo(1, 'right')">
           <img src="https://www.figma.com/api/mcp/asset/1167387f-16ad-4233-ba1b-689203b1aa7e" alt="뒤로">
         </button>
-        <button class="btn-skip" onclick="App.go('screen-setup')">
+        <button class="btn-skip" onclick="App.go('screen-ad')">
           <img class="skip-icon"
             src="https://www.figma.com/api/mcp/asset/a80d230e-860f-435f-b3a6-543001ceee39" alt="">
           Skip
@@ -159,7 +159,7 @@
         </div>
         <div class="ob-text">
           <p class="ob-title">Select Truth or Dare</p>
-          <p class="ob-desc">Truth or Dare 중 하나를 선택 후<br>게임시작 버튼을 눌러주세요!</p>
+          <p class="ob-desc ob-desc-white">Truth or Dare 중 하나를 선택 후<br>게임시작 버튼을 눌러주세요!</p>
         </div>
       </div>
 
@@ -167,8 +167,182 @@
         <div class="page-dots">
           <span class="dot"></span><span class="dot"></span><span class="dot active"></span>
         </div>
-        <button class="btn-primary" onclick="App.go('screen-setup')">시작하기</button>
+        <button class="btn-primary" onclick="App.go('screen-ad')">시작하기</button>
       </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       AD / PREMIUM SUBSCRIPTION SCREEN
+  ═══════════════════════════════════ -->
+  <div id="screen-ad" class="screen">
+    <div class="screen-inner white">
+
+      <div class="top-nav">
+        <button class="btn-back" onclick="App.go('screen-level')">
+          <img src="https://www.figma.com/api/mcp/asset/31494a6c-043a-47a6-878d-4bd3fbedfb38" alt="뒤로">
+        </button>
+        <p class="nav-title">프리미엄 구독</p>
+        <button class="btn-close" onclick="App.go('screen-level')">✕</button>
+      </div>
+
+      <div class="ad-scroll">
+        <!-- Illustration -->
+        <div class="ad-illustration">
+          <div class="ad-block ad-block-green">
+            <span class="ad-block-emoji">🎮</span>
+          </div>
+          <div class="ad-block ad-block-orange ad-block-tall">
+            <span class="ad-block-text">Ad</span>
+          </div>
+          <div class="ad-block ad-block-pink">
+            <span class="ad-block-emoji">🔥</span>
+          </div>
+          <span class="ad-sparkle" style="top:0;left:30px;color:#ff59c8;">✦</span>
+          <span class="ad-sparkle" style="top:10px;right:20px;color:#8bc351;">✦</span>
+          <span class="ad-sparkle" style="bottom:0;left:10px;color:#8bc351;">✦</span>
+          <span class="ad-sparkle" style="bottom:0;right:5px;color:#ddd;">✦</span>
+        </div>
+
+        <!-- Title -->
+        <div class="ad-title-row">
+          <p class="ad-title">TRUTH OR DARE</p>
+          <span class="ad-pro-badge">PRO</span>
+        </div>
+        <p class="ad-sub">HARD &amp; 광고제거</p>
+        <p class="ad-update">HARD MODE 질문지는 매달 업데이트 됩니다.</p>
+
+        <!-- Plans -->
+        <div class="ad-plans">
+          <div class="ad-plan-card">
+            <div>
+              <p class="plan-name">무제한 PRO</p>
+              <p class="plan-desc">한 번 결제로 평생!</p>
+            </div>
+            <p class="plan-price">₩25,900</p>
+          </div>
+          <div class="ad-plan-card">
+            <div>
+              <p class="plan-name">월간 구독</p>
+              <p class="plan-desc">언제든 취소할 수 있어요!</p>
+            </div>
+            <p class="plan-price">₩5,900<span class="plan-period">/월</span></p>
+          </div>
+        </div>
+
+        <!-- Benefits -->
+        <p class="ad-benefits-title">PRO 혜택</p>
+        <div class="ad-benefits">
+          <div class="ad-benefit-card" style="background:#ff7359;">
+            <div class="benefit-icon-area">
+              <span class="benefit-emoji">📢</span>
+            </div>
+            <div class="benefit-info">
+              <p class="benefit-name">광고 제거</p>
+              <p class="benefit-desc">앱 전체 광고 제거</p>
+            </div>
+          </div>
+          <div class="ad-benefit-card" style="background:#ff59c8;">
+            <div class="benefit-icon-area">
+              <span class="benefit-emoji">🔥</span>
+            </div>
+            <div class="benefit-info">
+              <p class="benefit-name">HARD 모드 해제</p>
+              <p class="benefit-desc">360개의 모드 해제</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skip -->
+        <button class="ad-skip-btn" onclick="App.go('screen-level')">지금은 괜찮아요</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       LEVEL SELECT
+  ═══════════════════════════════════ -->
+  <div id="screen-level" class="screen">
+    <div class="screen-inner white">
+
+      <div class="top-nav level-nav">
+        <div class="nav-spacer"></div>
+        <div class="theme-toggle-row">
+          <img class="sun-icon"
+            src="https://www.figma.com/api/mcp/asset/9c24074e-8725-4c69-bf2a-4ab2c1d9267a"
+            alt="밝기">
+          <button id="theme-toggle" class="toggle-btn active" onclick="App.toggleTheme()" aria-label="다크/라이트 모드">
+            <span class="toggle-knob"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="level-center">
+        <!-- Question mark illustration -->
+        <div class="level-illus">
+          <div class="level-card-q">
+            <span class="level-q">?</span>
+          </div>
+        </div>
+
+        <div class="level-header">
+          <p class="level-title">TRUTE OR DARE</p>
+          <p class="level-sub">게임모드를 선택해주세요.</p>
+        </div>
+
+        <!-- Level cards -->
+        <div class="level-cards">
+          <button class="level-card easy" onclick="App.selectLevel('easy')">
+            <div class="level-card-left">
+              <div class="level-icon-wrap" style="--icon-color:#8bc351;">
+                <div class="level-icon" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/d772a248-c13e-4bec-b427-8d8684e40d8c'); mask-image:url('https://www.figma.com/api/mcp/asset/d772a248-c13e-4bec-b427-8d8684e40d8c'); background:#8bc351; -webkit-mask-size:contain; mask-size:contain; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat; -webkit-mask-position:center; mask-position:center;"></div>
+              </div>
+              <div class="level-info green">
+                <p class="level-name">Easy</p>
+                <p class="level-desc">친구들과 부담 없이 즐겨보세요!</p>
+              </div>
+            </div>
+          </button>
+
+          <button class="level-card normal" onclick="App.selectLevel('normal')">
+            <div class="level-card-left">
+              <div class="level-icon-wrap" style="--icon-color:#f1c40a;">
+                <div class="level-icon" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/8f85fdfb-6a3a-4ac9-9362-5b0e17ba73df'); mask-image:url('https://www.figma.com/api/mcp/asset/8f85fdfb-6a3a-4ac9-9362-5b0e17ba73df'); background:#f1c40a; -webkit-mask-size:contain; mask-size:contain; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat; -webkit-mask-position:center; mask-position:center;"></div>
+              </div>
+              <div class="level-info yellow">
+                <p class="level-name">Normal</p>
+                <p class="level-desc">가볍지만 두근거리는 질문과 미션!</p>
+              </div>
+            </div>
+          </button>
+
+          <button class="level-card hard" onclick="App.selectLevel('hard')">
+            <div class="level-card-left">
+              <div class="level-icon-wrap" style="--icon-color:#ff5963;">
+                <div class="level-icon" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/75aabb35-854f-464e-b4dd-e2e3aae310f7'); mask-image:url('https://www.figma.com/api/mcp/asset/75aabb35-854f-464e-b4dd-e2e3aae310f7'); background:#ff5963; -webkit-mask-size:contain; mask-size:contain; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat; -webkit-mask-position:center; mask-position:center;"></div>
+              </div>
+              <div class="level-info red">
+                <p class="level-name">Hard</p>
+                <p class="level-desc">한계를 시험하는 도전과 과감한 질문!</p>
+              </div>
+            </div>
+            <div class="lock-icon" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/b2ff1daa-6fa7-4412-afa1-9793c0213cc3'); mask-image:url('https://www.figma.com/api/mcp/asset/b2ff1daa-6fa7-4412-afa1-9793c0213cc3'); background:#ff5963; -webkit-mask-size:contain; mask-size:contain; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat; -webkit-mask-position:center; mask-position:center;"></div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bottom ad banner -->
+      <button class="level-ad-banner" onclick="App.go('screen-ad')">
+        <div class="banner-icon">
+          <div style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/5c5093d1-05d6-4c76-a10d-5dd6eba3d730'); mask-image:url('https://www.figma.com/api/mcp/asset/5c5093d1-05d6-4c76-a10d-5dd6eba3d730'); background:white; -webkit-mask-size:contain; mask-size:contain; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat; -webkit-mask-position:center; mask-position:center; width:40px; height:40px;"></div>
+        </div>
+        <div class="banner-text">
+          <p class="banner-title">광고제거</p>
+          <p class="banner-desc">광고 제거하고 편하게 사용하세요!</p>
+        </div>
+      </button>
 
     </div>
   </div>
@@ -180,7 +354,7 @@
     <div class="screen-inner white">
 
       <div class="top-nav">
-        <button class="btn-back red" onclick="App.go('screen-ob3')">
+        <button class="btn-back" onclick="App.go('screen-level')">
           <img src="https://www.figma.com/api/mcp/asset/31494a6c-043a-47a6-878d-4bd3fbedfb38" alt="뒤로">
         </button>
       </div>
@@ -205,7 +379,7 @@
       </div>
 
       <div class="setup-bottom">
-        <button class="btn-primary red-btn" onclick="App.startGame()">Start Game</button>
+        <button class="btn-primary" onclick="App.startGame()">Start Game</button>
       </div>
 
     </div>
@@ -215,10 +389,10 @@
        GAME — 게임 진행
   ═══════════════════════════════════ -->
   <div id="screen-game" class="screen">
-    <div class="screen-inner dark">
+    <div id="game-inner" class="screen-inner dark">
 
       <div class="top-nav">
-        <button class="btn-back white" onclick="App.goHome()">
+        <button class="btn-back inverted" onclick="App.goHome()">
           <img src="https://www.figma.com/api/mcp/asset/666d4990-d431-4fa6-a13a-f04128bb109e" alt="뒤로">
         </button>
       </div>
@@ -263,10 +437,10 @@
        RESULTS — 게임 결과
   ═══════════════════════════════════ -->
   <div id="screen-results" class="screen">
-    <div class="screen-inner dark">
+    <div id="results-inner" class="screen-inner dark">
 
       <div class="top-nav">
-        <button class="btn-back white" onclick="App.go('screen-game')">
+        <button class="btn-back inverted" onclick="App.go('screen-game')">
           <img src="https://www.figma.com/api/mcp/asset/ed39d09f-0fb1-4fea-b31f-3fb5646bfe0e" alt="뒤로">
         </button>
       </div>
