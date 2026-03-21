@@ -128,11 +128,8 @@ const App = {
     app.setAttribute('data-theme', this.isDarkTheme ? 'dark' : 'light');
 
     const btn = document.getElementById('theme-toggle');
-    if (this.isDarkTheme) {
-      btn.classList.add('active');
-    } else {
-      btn.classList.remove('active');
-    }
+    // active = light mode ON; no active = dark mode (default)
+    btn.classList.toggle('active', !this.isDarkTheme);
   },
 
   /* ── Player Management ── */

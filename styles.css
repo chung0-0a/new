@@ -210,6 +210,9 @@ body {
 }
 .skip-icon { width: 16px; height: 16px; object-fit: contain; }
 
+/* Skip button on dark backgrounds */
+.screen-inner.dark .btn-skip { color: rgba(255,255,255,0.65); }
+
 /* ===== ONBOARDING BODY ===== */
 .ob-body {
   flex: 1;
@@ -505,6 +508,14 @@ body {
 }
 
 /* ===== LEVEL SELECT SCREEN ===== */
+.level-topbar {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 54px 20px 0;
+  height: 98px;
+}
 .level-nav { justify-content: flex-end; padding-top: 54px; }
 .theme-toggle-row {
   display: flex; align-items: center; gap: 10px;
@@ -543,8 +554,31 @@ body {
   overflow: hidden;
 }
 
-/* Question mark illustration */
-.level-illus { display: flex; gap: 4px; }
+/* Question / Exclamation illustration cards */
+.level-illus { display: flex; gap: 4px; align-items: center; }
+.illus-card {
+  width: 112px; height: 74px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+}
+.illus-card span {
+  font-family: 'GmarketSans', sans-serif;
+  font-size: 40px; font-weight: 700; color: white;
+  display: inline-block;
+}
+.card-q {
+  background: #ff5963;
+  transform: rotate(-3deg);
+  margin-right: -6px;
+  z-index: 1;
+}
+.card-q span { transform: rotate(-5deg); }
+.card-excl {
+  background: #ff7359;
+  transform: rotate(3deg);
+}
+
+/* legacy alias */
 .level-card-q {
   width: 112px; height: 74px;
   background: #ff5963;
@@ -637,6 +671,17 @@ body {
 }
 
 /* ===== GAME SETUP ===== */
+
+/* Vertical-center wrapper between nav and bottom bar */
+.setup-center {
+  flex: 1;
+  display: flex; flex-direction: column;
+  justify-content: center;
+  gap: 25px;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
 .setup-body {
   flex: 1;
   display: flex; flex-direction: column;
@@ -686,6 +731,12 @@ body {
 .setup-add-btn:active { opacity: 0.85; }
 .setup-add-btn img { width: 24px; height: 24px; object-fit: contain; }
 
+/* Nested inner wrapper for add buttons (Figma Frame3 structure) */
+.add-inner, .ob2-add-inner {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%;
+}
+
 .setup-player-list {
   flex: 1; display: flex; flex-direction: column;
   gap: 6px; overflow-y: auto;
@@ -710,7 +761,7 @@ body {
 
 .setup-bottom {
   flex-shrink: 0;
-  padding: 16px 0 34px;
+  padding: 16px 20px 34px;
 }
 
 /* ===== GAME HEADER ===== */
