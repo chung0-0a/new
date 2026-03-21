@@ -1,24 +1,55 @@
 /* ===== FONTS ===== */
+/* GmarketSans — local files (CDN was broken) */
 @font-face {
   font-family: 'GmarketSans';
   font-weight: 700;
   font-style: normal;
-  font-display: swap;
-  src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansTTFBold.woff2') format('woff2');
+  font-display: block;
+  src: url('./fonts/GmarketSansBold.woff2') format('woff2');
 }
 @font-face {
   font-family: 'GmarketSans';
   font-weight: 500;
   font-style: normal;
-  font-display: swap;
-  src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansTTFMedium.woff2') format('woff2');
+  font-display: block;
+  src: url('./fonts/GmarketSansMedium.woff2') format('woff2');
 }
 @font-face {
   font-family: 'GmarketSans';
   font-weight: 300;
   font-style: normal;
-  font-display: swap;
-  src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansTTFLight.woff2') format('woff2');
+  font-display: block;
+  src: url('./fonts/GmarketSansLight.woff2') format('woff2');
+}
+
+/* Pretendard — local subset files */
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+  src: url('./fonts/Pretendard-Bold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 500;
+  font-style: normal;
+  font-display: block;
+  src: url('./fonts/Pretendard-Medium.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+  src: url('./fonts/Pretendard-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 300;
+  font-style: normal;
+  font-display: block;
+  src: url('./fonts/Pretendard-Regular.woff2') format('woff2');
 }
 
 /* ===== RESET ===== */
