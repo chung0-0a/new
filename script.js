@@ -57,6 +57,9 @@ const App = {
   _usedTruth: new Set(),
   _usedDare: new Set(),
 
+  // Per-player stats: { playerName: { truth: 0, dare: 0 } }
+  _stats: {},
+
   /* ── Navigation ── */
 
   go(screenId) {
@@ -67,7 +70,7 @@ const App = {
   /* ── Player Management ── */
 
   addPlayer() {
-    const input = document.getElementById('player-input');
+    const input = document.getElementById('setup-input');
     const name = input.value.trim();
 
     if (!name) return;
@@ -93,7 +96,7 @@ const App = {
   },
 
   _renderPlayerList() {
-    const list = document.getElementById('player-list');
+    const list = document.getElementById('setup-player-list');
     list.innerHTML = '';
     this.players.forEach((name, i) => {
       const item = document.createElement('div');
@@ -106,31 +109,10 @@ const App = {
     });
   },
 
-  /* ── Onboarding flow ── */
-
-  goToOb3() {
-    if (this.players.length < 2) {
-      this.showAlert('최소 2명의 플레이어를 추가해주세요!');
-      return;
-    }
-    this.go('screen-ob3');
-  },
-
-  selectMode(mode) {
-    this.currentMode = mode;
-
-    const cardTruth = document.getElementById('card-truth');
-    const cardDare  = document.getElementById('card-dare');
-
-    cardTruth.classList.toggle('selected', mode === 'truth');
-    cardDare.classList.toggle('selected', mode === 'dare');
-  },
-
   /* ── Game ── */
 
   startGame() {
     if (this.players.length < 2) {
-      this.go('screen-ob2');
       this.showAlert('최소 2명의 플레이어를 추가해주세요!');
       return;
     }
@@ -139,8 +121,14 @@ const App = {
     this._usedTruth.clear();
     this._usedDare.clear();
 
+    // Initialize stats
+    this._stats = {};
+    this.players.forEach(name => {
+      this._stats[name] = { truth: 0, dare: 0 };
+    });
+
     this.go('screen-game');
-    this.setMode(this.currentMode);
+    this.setMode('dare');
 
     document.getElementById('game-player-name').textContent = this.players[0];
     document.getElementById('game-question').textContent = '시작 버튼을 눌러주세요!';
@@ -172,8 +160,44 @@ const App = {
     usedSet.add(idx);
     document.getElementById('game-question').textContent = questions[idx];
 
+    // Track stats
+    if (this._stats[playerName]) {
+      this._stats[playerName][this.currentMode]++;
+    }
+
     // Advance to next player for the following turn
     this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
+  },
+
+  showResults() {
+    this._renderResults();
+    this.go('screen-results');
+  },
+
+  _renderResults() {
+    const list = document.getElementById('results-list');
+    list.innerHTML = '';
+    this.players.forEach(name => {
+      const stats = this._stats[name] || { truth: 0, dare: 0 };
+      const item = document.createElement('div');
+      item.className = 'result-item';
+      item.innerHTML = `
+        <span class="result-name">${this._escapeHtml(name)}</span>
+        <span class="result-stats">Truth ${stats.truth} · Dare ${stats.dare}</span>
+      `;
+      list.appendChild(item);
+    });
+  },
+
+  endGame() {
+    this.players = [];
+    this._stats = {};
+    this._renderPlayerList();
+    this.go('screen-ob1');
+  },
+
+  playAgain() {
+    this.startGame();
   },
 
   goHome() {
@@ -181,6 +205,7 @@ const App = {
       '홈으로 돌아가시겠습니까?\n게임 진행 상황이 초기화됩니다.',
       () => {
         this.players = [];
+        this._stats = {};
         this._renderPlayerList();
         this.go('screen-ob1');
       }
@@ -198,7 +223,6 @@ const App = {
   },
 
   _openModal(msg, onConfirm) {
-    // Remove existing modal
     const existing = document.getElementById('app-modal');
     if (existing) existing.remove();
 
@@ -218,7 +242,7 @@ const App = {
       </div>
     `;
 
-    document.querySelector('.app-wrapper').appendChild(overlay);
+    document.querySelector('.app').appendChild(overlay);
 
     document.getElementById('modal-ok').addEventListener('click', () => {
       overlay.remove();
