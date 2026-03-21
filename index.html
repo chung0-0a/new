@@ -2,16 +2,159 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <title>Lotto Number Generator</title>
+  <title>Truth or Dare</title>
 </head>
 <body>
-  <div class="container">
-    <h1>로또 번호 추첨기</h1>
-    <button id="generateButton">번호 만들기</button>
-    <div id="result"></div>
-  </div>
+  <div class="app-wrapper">
+
+    <!-- ===== SPLASH ===== -->
+    <div id="screen-splash" class="screen active">
+      <div class="splash-container">
+        <div class="splash-logo">
+          <span>❓</span><span>❗</span>
+        </div>
+        <div class="splash-title">
+          <div>TRUTH</div>
+          <div>OR</div>
+          <div>DARE</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== ONBOARDING 1 — 게임 소개 ===== -->
+    <div id="screen-ob1" class="screen">
+      <div class="screen-inner light">
+        <div class="top-nav">
+          <div class="nav-spacer"></div>
+          <button class="btn-skip" onclick="App.go('screen-ob2')">Skip ↗</button>
+        </div>
+        <div class="ob-body">
+          <div class="avatar-grid">
+            <div class="avatar-card" style="background:#ffe6a6;">🧑‍🦱</div>
+            <div class="avatar-card" style="background:#a9d2fe;">👱</div>
+            <div class="avatar-card" style="background:#ffcca5;">👱‍♀️</div>
+            <div class="avatar-card" style="background:#ffe6a6;">🧑‍🦳</div>
+          </div>
+          <div class="ob-text">
+            <h2 class="ob-title">Truth or Dare</h2>
+            <p class="ob-desc">진실 혹은 행동으로 보여주는 게임<br>최대 인원 8명까지 같이 즐길 수 있습니다!</p>
+          </div>
+        </div>
+        <div class="bottom-bar">
+          <div class="page-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <button class="btn-primary" onclick="App.go('screen-ob2')">다음</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== ONBOARDING 2 — 플레이어 추가 ===== -->
+    <div id="screen-ob2" class="screen">
+      <div class="screen-inner light">
+        <div class="top-nav">
+          <button class="btn-back" onclick="App.go('screen-ob1')">‹</button>
+          <button class="btn-skip" onclick="App.go('screen-ob3')">Skip ↗</button>
+        </div>
+        <div class="ob-body">
+          <div class="player-setup">
+            <div class="player-input-row">
+              <input id="player-input" class="player-input" type="text"
+                placeholder="Player Add" maxlength="10"
+                onkeydown="if(event.key==='Enter') App.addPlayer()">
+              <button class="btn-add" onclick="App.addPlayer()">＋</button>
+            </div>
+            <div id="player-list" class="player-list"></div>
+          </div>
+          <div class="ob-text">
+            <h2 class="ob-title">Put Your Name!</h2>
+            <p class="ob-desc">플러스 버튼을 누르고 참여자의 이름을<br>입력하여 플레이어를 추가하세요!</p>
+          </div>
+        </div>
+        <div class="bottom-bar">
+          <div class="page-dots">
+            <span class="dot"></span>
+            <span class="dot active"></span>
+            <span class="dot"></span>
+          </div>
+          <button class="btn-primary" onclick="App.goToOb3()">다음</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== ONBOARDING 3 — Truth/Dare 선택 ===== -->
+    <div id="screen-ob3" class="screen">
+      <div class="screen-inner light">
+        <div class="top-nav">
+          <button class="btn-back" onclick="App.go('screen-ob2')">‹</button>
+          <button class="btn-skip" onclick="App.startGame()">Skip ↗</button>
+        </div>
+        <div class="ob-body">
+          <div class="mode-select">
+            <div class="mode-cards">
+              <div class="mode-card truth selected" id="card-truth" onclick="App.selectMode('truth')">
+                <div class="mode-icon">✓</div>
+                <span class="mode-label">Truth</span>
+              </div>
+              <div class="mode-card dare" id="card-dare" onclick="App.selectMode('dare')">
+                <div class="mode-icon">★</div>
+                <span class="mode-label">Dare</span>
+              </div>
+            </div>
+          </div>
+          <div class="ob-text">
+            <h2 class="ob-title">Select Truth or Dare</h2>
+            <p class="ob-desc">Truth or Dare 중 하나를 선택 후<br>게임시작 버튼을 눌러주세요!</p>
+          </div>
+        </div>
+        <div class="bottom-bar">
+          <div class="page-dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot active"></span>
+          </div>
+          <button class="btn-primary" onclick="App.startGame()">시작하기</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== GAME SCREEN ===== -->
+    <div id="screen-game" class="screen">
+      <div class="screen-inner dark">
+        <div class="top-nav">
+          <button class="btn-back white" onclick="App.goHome()">‹</button>
+        </div>
+        <div class="game-header">
+          <h1 class="game-title">TRUTH OR DARE?</h1>
+          <p class="game-subtitle">선택 후 시작 버튼을 눌러주세요!</p>
+          <div class="game-tabs">
+            <button class="tab truth active" id="tab-truth" onclick="App.setMode('truth')">✓ Truth</button>
+            <button class="tab dare" id="tab-dare" onclick="App.setMode('dare')">★ Dare</button>
+          </div>
+        </div>
+        <div class="game-card">
+          <div class="card-player">
+            <span class="player-icon">👤</span>
+            <span id="game-player-name">플레이어</span>
+          </div>
+          <p id="game-question">시작 버튼을 눌러주세요!</p>
+        </div>
+        <div class="game-footer">
+          <button class="btn-home" onclick="App.goHome()">🏠</button>
+          <button class="btn-start" onclick="App.nextTurn()">Start</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- .app-wrapper -->
+
   <script src="script.js"></script>
 </body>
 </html>
