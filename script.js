@@ -128,8 +128,12 @@ const App = {
     app.setAttribute('data-theme', this.isDarkTheme ? 'dark' : 'light');
 
     const btn = document.getElementById('theme-toggle');
-    // active = light mode ON; no active = dark mode (default)
     btn.classList.toggle('active', !this.isDarkTheme);
+
+    // moon icon = dark mode, sun icon = light mode
+    document.querySelector('.sun-icon').src = this.isDarkTheme
+      ? 'https://www.figma.com/api/mcp/asset/99646c9c-247b-4ea6-84b4-3c165e0cef1c'
+      : 'https://www.figma.com/api/mcp/asset/eb0b002c-a0d3-4b06-a9cc-b1ef337948ce';
   },
 
   /* ── Player Management ── */
