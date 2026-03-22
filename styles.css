@@ -1004,3 +1004,16 @@ body {
 [data-theme="dark"] .player-item { background: rgba(255,89,99,0.2); color: white; }
 [data-theme="dark"] .btn-delete { color: white; }
 [data-theme="dark"] #screen-setup .btn-back img { filter: brightness(0) invert(1); }
+
+/* OB2: demo player items + input */
+[data-theme="dark"] .ob2-input-fake { background: #2a2a2a; color: rgba(255,255,255,0.35); border-color: #444; }
+[data-theme="dark"] .ob2-player-item { background: #2a2a2a; color: rgba(255,255,255,0.85); border-color: #3a3a3a; }
+[data-theme="dark"] .ob2-player-faded { opacity: 0.25; }
+[data-theme="dark"] .ob-title { color: white; }
+
+/* OB3: mode demo cards */
+[data-theme="dark"] .ob3-card { background: #2a2a2a; border-color: #3a3a3a; }
+[data-theme="dark"] .ob3-card.selected { border-color: #ff5963; }
+[data-theme="dark"] .ob3-label { color: #888; }
+[data-theme="dark"] .ob3-label.selected { color: #ff5963; }
+[data-theme="dark"] .ob3-star-icon { filter: brightness(0) invert(0.5); }
