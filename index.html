@@ -2,16 +2,393 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" href="styles.css">
-  <title>Lotto Number Generator</title>
+  <title>Truth or Dare</title>
 </head>
 <body>
-  <div class="container">
-    <h1>로또 번호 추첨기</h1>
-    <button id="generateButton">번호 만들기</button>
-    <div id="result"></div>
+<div class="app" data-theme="dark">
+
+  <!-- ═══ SPLASH ═══ -->
+  <div id="screen-splash" class="screen active">
+    <div class="splash">
+      <img class="splash-logo"
+        src="https://www.figma.com/api/mcp/asset/2f3ed641-5625-40de-b437-fcbb0362d3e6" alt="logo">
+      <div class="splash-title"><p>TRUTH</p><p>OR</p><p>DARE</p></div>
+    </div>
   </div>
-  <script src="script.js"></script>
+
+  <!-- ═══ OB1 — 게임 소개 (light) ═══ -->
+  <div id="screen-ob1" class="screen ob-screen" data-ob="0">
+    <div class="screen-inner light">
+      <div class="top-nav">
+        <div class="nav-spacer"></div>
+        <button class="btn-skip" onclick="App.go('screen-ad')">
+          <img class="skip-icon" src="https://www.figma.com/api/mcp/asset/21755c25-72b2-4856-81e7-ad87819d2903" alt="">
+          Skip
+        </button>
+      </div>
+
+      <div class="ob-body">
+        <div class="avatar-grid">
+          <div class="avatar-card" style="background:#ffe6a6;">
+            <img src="https://www.figma.com/api/mcp/asset/3abef0aa-7367-41d8-aa62-f35e0555ff40" alt="">
+          </div>
+          <div class="avatar-card" style="background:#a9d2fe;">
+            <img src="https://www.figma.com/api/mcp/asset/4a48b17a-3619-4136-b46a-14e945f5e803" alt="">
+          </div>
+          <div class="avatar-card" style="background:#ffcca5;">
+            <img src="https://www.figma.com/api/mcp/asset/01e499b4-c27c-4a75-87fc-19902bb3656c" alt="">
+          </div>
+          <div class="avatar-card" style="background:#ffe6a6;">
+            <img src="https://www.figma.com/api/mcp/asset/c9beea9b-931c-4d03-b64d-1547023d60c8" alt="">
+          </div>
+        </div>
+        <div class="ob-text">
+          <p class="ob-title">Truth or Dare</p>
+          <p class="ob-desc">진실 혹은 행동으로 보여주는 게임<br>최대 인원 8명까지 같이 즐길 수 있습니다!</p>
+        </div>
+      </div>
+
+      <div class="bottom-bar">
+        <div class="page-dots">
+          <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+        <button class="btn-primary" onclick="App.obGo(1,'left')">다음</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ OB2 — 플레이어 예시 (light) ═══ -->
+  <div id="screen-ob2" class="screen ob-screen" data-ob="1">
+    <div class="screen-inner light">
+      <div class="top-nav">
+        <button class="btn-back" onclick="App.obGo(0,'right')">
+          <img src="https://www.figma.com/api/mcp/asset/7c756aab-7607-4e36-8f2c-d8b12d1f410a" alt="뒤로">
+        </button>
+        <button class="btn-skip" onclick="App.go('screen-ad')">
+          <img class="skip-icon" src="https://www.figma.com/api/mcp/asset/21755c25-72b2-4856-81e7-ad87819d2903" alt="">
+          Skip
+        </button>
+      </div>
+
+      <div class="ob-body">
+        <!-- Static demo -->
+        <div class="ob2-demo">
+          <div class="ob2-input-row">
+            <div class="ob2-input-fake">Player Add</div>
+            <div class="ob2-add-btn">
+              <div class="ob2-add-inner">
+                <img src="https://www.figma.com/api/mcp/asset/425b453a-b40f-48c2-bba5-a6fd70f381da" alt="+" style="width:14px;height:14px;">
+              </div>
+            </div>
+          </div>
+          <div class="ob2-player-item">
+            <span>Player1</span>
+            <div class="ob2-trash" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/7223c150-e608-47c6-a3c8-0c685918bab5');mask-image:url('https://www.figma.com/api/mcp/asset/7223c150-e608-47c6-a3c8-0c685918bab5');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#5f5f5f;width:14px;height:14px;"></div>
+          </div>
+          <div class="ob2-player-item">
+            <span>Player2</span>
+            <div class="ob2-trash" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/7223c150-e608-47c6-a3c8-0c685918bab5');mask-image:url('https://www.figma.com/api/mcp/asset/7223c150-e608-47c6-a3c8-0c685918bab5');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#5f5f5f;width:14px;height:14px;"></div>
+          </div>
+          <div class="ob2-player-item ob2-player-faded">
+            <span>Player3</span>
+            <div class="ob2-trash" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/7223c150-e608-47c6-a3c8-0c685918bab5');mask-image:url('https://www.figma.com/api/mcp/asset/7223c150-e608-47c6-a3c8-0c685918bab5');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#5f5f5f;width:14px;height:14px;"></div>
+          </div>
+        </div>
+        <div class="ob-text">
+          <p class="ob-title">Put Your Name!</p>
+          <p class="ob-desc">플러스 버튼을 누르고 참여자의 이름을<br>입력하여 플레이어를 추가하세요!</p>
+        </div>
+      </div>
+
+      <div class="bottom-bar">
+        <div class="page-dots">
+          <span class="dot"></span><span class="dot active"></span><span class="dot"></span>
+        </div>
+        <button class="btn-primary" onclick="App.obGo(2,'left')">다음</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ OB3 — Truth/Dare 예시 (light) ═══ -->
+  <div id="screen-ob3" class="screen ob-screen" data-ob="2">
+    <div class="screen-inner light">
+      <div class="top-nav">
+        <button class="btn-back" onclick="App.obGo(1,'right')">
+          <img src="https://www.figma.com/api/mcp/asset/7c756aab-7607-4e36-8f2c-d8b12d1f410a" alt="뒤로">
+        </button>
+        <button class="btn-skip" onclick="App.go('screen-ad')">
+          <img class="skip-icon" src="https://www.figma.com/api/mcp/asset/21755c25-72b2-4856-81e7-ad87819d2903" alt="">
+          Skip
+        </button>
+      </div>
+
+      <div class="ob-body">
+        <div class="ob3-mode-cards">
+          <div class="ob3-card selected">
+            <img class="ob3-truth-icon" src="https://www.figma.com/api/mcp/asset/a1671351-1cd8-4b48-8453-9fc297184db5" alt="truth">
+            <span class="ob3-label selected">Trute</span>
+          </div>
+          <div class="ob3-card">
+            <img class="ob3-star-icon"
+              src="https://www.figma.com/api/mcp/asset/2dd66881-15bc-41a3-aa7d-820a979cf4e5" alt="dare">
+            <span class="ob3-label">Dare</span>
+          </div>
+        </div>
+        <div class="ob-text">
+          <p class="ob-title">Select Truth or Dare</p>
+          <p class="ob-desc">Truth or Dare 중 하나를 선택 후<br>게임시작 버튼을 눌러주세요!</p>
+        </div>
+      </div>
+
+      <div class="bottom-bar">
+        <div class="page-dots">
+          <span class="dot"></span><span class="dot"></span><span class="dot active"></span>
+        </div>
+        <button class="btn-primary" onclick="App.go('screen-ad')">시작하기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ AD / 프리미엄 구독 ═══ -->
+  <div id="screen-ad" class="screen">
+    <div class="screen-inner white">
+      <div class="top-nav">
+        <button class="btn-back" onclick="App.go('screen-level')">
+          <img src="https://www.figma.com/api/mcp/asset/7c756aab-7607-4e36-8f2c-d8b12d1f410a" alt="뒤로">
+        </button>
+        <p class="nav-title">프리미엄 구독</p>
+        <button class="btn-close" onclick="App.go('screen-level')">✕</button>
+      </div>
+
+      <div class="ad-scroll">
+        <div class="ad-illustration">
+          <div class="ad-block ad-block-green"><span class="ad-block-emoji">🎮</span></div>
+          <div class="ad-block ad-block-orange ad-block-tall"><span class="ad-block-text">Ad</span></div>
+          <div class="ad-block ad-block-pink"><span class="ad-block-emoji">🔥</span></div>
+          <span class="ad-sparkle" style="top:0;left:30px;color:#ff59c8;">✦</span>
+          <span class="ad-sparkle" style="top:10px;right:20px;color:#8bc351;">✦</span>
+          <span class="ad-sparkle" style="bottom:0;left:10px;color:#8bc351;">✦</span>
+          <span class="ad-sparkle" style="bottom:0;right:5px;color:#ddd;">✦</span>
+        </div>
+        <div class="ad-title-row">
+          <p class="ad-title">TRUTH OR DARE</p>
+          <span class="ad-pro-badge">PRO</span>
+        </div>
+        <p class="ad-sub">HARD &amp; 광고제거</p>
+        <p class="ad-update">HARD MODE 질문지는 매달 업데이트 됩니다.</p>
+        <div class="ad-plans">
+          <div class="ad-plan-card">
+            <div><p class="plan-name">무제한 PRO</p><p class="plan-desc">한 번 결제로 평생!</p></div>
+            <p class="plan-price">₩25,900</p>
+          </div>
+          <div class="ad-plan-card">
+            <div><p class="plan-name">월간 구독</p><p class="plan-desc">언제든 취소할 수 있어요!</p></div>
+            <p class="plan-price">₩5,900<span class="plan-period">/월</span></p>
+          </div>
+        </div>
+        <p class="ad-benefits-title">PRO 혜택</p>
+        <div class="ad-benefits">
+          <div class="ad-benefit-card" style="background:#ff7359;">
+            <div class="benefit-icon-area"><span class="benefit-emoji">📢</span></div>
+            <div class="benefit-info"><p class="benefit-name">광고 제거</p><p class="benefit-desc">앱 전체 광고 제거</p></div>
+          </div>
+          <div class="ad-benefit-card" style="background:#ff59c8;">
+            <div class="benefit-icon-area"><span class="benefit-emoji">🔥</span></div>
+            <div class="benefit-info"><p class="benefit-name">HARD 모드 해제</p><p class="benefit-desc">360개의 모드 해제</p></div>
+          </div>
+        </div>
+        <button class="ad-skip-btn" onclick="App.go('screen-level')">지금은 괜찮아요</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ LEVEL SELECT ═══ -->
+  <div id="screen-level" class="screen">
+    <div class="screen-inner white">
+
+      <!-- 토글 only (우상단) -->
+      <div class="level-topbar">
+        <div class="theme-toggle-row">
+          <img class="sun-icon"
+            src="https://www.figma.com/api/mcp/asset/eb0b002c-a0d3-4b06-a9cc-b1ef337948ce" alt="밝기">
+          <!-- active = 라이트모드 ON, 기본(no active) = 다크모드 -->
+          <button id="theme-toggle" class="toggle-btn" onclick="App.toggleTheme()" aria-label="다크/라이트 모드">
+            <span class="toggle-knob"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 중앙 콘텐츠 (flex:1 + justify-content:center) -->
+      <div class="level-center">
+        <!-- 물음표 카드 일러스트 -->
+        <div class="level-illus">
+          <div class="illus-card card-q"><span>?</span></div>
+          <div class="illus-card card-excl"><span>!</span></div>
+        </div>
+
+        <div class="level-header">
+          <p class="level-title">TRUTE OR DARE</p>
+          <p class="level-sub">게임모드를 선택해주세요.</p>
+        </div>
+
+        <div class="level-cards">
+          <!-- Easy -->
+          <button class="level-card easy" onclick="App.selectLevel('easy')">
+            <div class="level-card-left">
+              <div class="level-icon"
+                style="background:#8bc351;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/161f949d-4e11-4d28-9bdf-6fb608696383');mask-image:url('https://www.figma.com/api/mcp/asset/161f949d-4e11-4d28-9bdf-6fb608696383');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;">
+              </div>
+              <div class="level-info">
+                <p class="level-name" style="color:#8bc351;">Easy</p>
+                <p class="level-desc" style="color:#8bc351;">친구들과 부담 없이 즐겨보세요!</p>
+              </div>
+            </div>
+          </button>
+
+          <!-- Normal -->
+          <button class="level-card normal" onclick="App.selectLevel('normal')">
+            <div class="level-card-left">
+              <div class="level-icon"
+                style="background:#f1c40a;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/77ae13fa-1477-4f6c-9c94-eefda937d4e2');mask-image:url('https://www.figma.com/api/mcp/asset/77ae13fa-1477-4f6c-9c94-eefda937d4e2');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;width:41px;height:36px;">
+              </div>
+              <div class="level-info">
+                <p class="level-name" style="color:#f1c40a;">Normal</p>
+                <p class="level-desc" style="color:#f1c40a;">가볍지만 두근거리는 질문과 미션!</p>
+              </div>
+            </div>
+          </button>
+
+          <!-- Hard (locked) -->
+          <button class="level-card hard" onclick="App.selectLevel('hard')">
+            <div class="level-card-left">
+              <div class="level-icon"
+                style="background:#ff5963;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/3dd63cda-456a-4206-8856-0aa5fdd1fa5e');mask-image:url('https://www.figma.com/api/mcp/asset/3dd63cda-456a-4206-8856-0aa5fdd1fa5e');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;width:37px;height:37px;">
+              </div>
+              <div class="level-info">
+                <p class="level-name" style="color:#ff5963;">Hard</p>
+                <p class="level-desc" style="color:#ff5963;">한계를 시험하는 도전과 과감한 질문!</p>
+              </div>
+            </div>
+            <div style="width:17px;height:17px;background:#ff5963;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/4f432dab-3906-438e-912d-21b3c6e7d1f4');mask-image:url('https://www.figma.com/api/mcp/asset/4f432dab-3906-438e-912d-21b3c6e7d1f4');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;flex-shrink:0;"></div>
+          </button>
+        </div>
+      </div>
+
+      <!-- 하단 광고 배너 -->
+      <button class="level-ad-banner" onclick="App.go('screen-ad')">
+        <div style="width:45px;height:45px;background:white;flex-shrink:0;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/5280b10b-82f2-4739-a11f-0d2409e6e018');mask-image:url('https://www.figma.com/api/mcp/asset/5280b10b-82f2-4739-a11f-0d2409e6e018');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
+        <div class="banner-text">
+          <p class="banner-title">광고제거</p>
+          <p class="banner-desc">광고 제거하고 편하게 사용하세요!</p>
+        </div>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ═══ SETUP — 플레이어 입력 ═══ -->
+  <div id="screen-setup" class="screen">
+    <div class="screen-inner white" style="justify-content:space-between;">
+
+      <!-- 상단 nav -->
+      <div class="top-nav">
+        <button class="btn-back" onclick="App.go('screen-level')">
+          <img src="https://www.figma.com/api/mcp/asset/7c756aab-7607-4e36-8f2c-d8b12d1f410a" alt="뒤로">
+        </button>
+      </div>
+
+      <!-- 중앙 콘텐츠 (수직 중앙 정렬) -->
+      <div class="setup-center">
+        <div class="setup-header">
+          <p class="setup-title">TRUTE OR DARE</p>
+          <p class="setup-subtitle">참가자 이름을 입력해주세요.</p>
+        </div>
+
+        <div class="setup-input-area">
+          <div class="setup-input-row">
+            <input id="setup-input" class="setup-input" type="text"
+              placeholder="Enter Participant name" maxlength="10"
+              onkeydown="if(event.key==='Enter') App.addPlayer()">
+            <!-- 빨간 + 버튼 (Frame3 구조) -->
+            <button class="setup-add-btn" onclick="App.addPlayer()">
+              <div class="add-inner">
+                <img src="https://www.figma.com/api/mcp/asset/61a81b63-9c04-46a7-99cd-7c131cac11c5" alt="+" style="width:14px;height:14px;">
+              </div>
+            </button>
+          </div>
+          <div id="setup-player-list" class="setup-player-list"></div>
+        </div>
+      </div>
+
+      <!-- 하단 버튼 -->
+      <div class="setup-bottom">
+        <button class="btn-primary" onclick="App.startGame()">Start Game</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ GAME ═══ -->
+  <div id="screen-game" class="screen">
+    <div id="game-inner" class="screen-inner dark">
+      <div class="top-nav">
+        <button class="btn-back inverted" onclick="App.goHome()">
+          <img src="https://www.figma.com/api/mcp/asset/4f7ef3de-b3a2-42c1-8f80-7a657948f7be" alt="뒤로">
+        </button>
+      </div>
+
+      <div class="game-header">
+        <p class="game-title">TRUTH OR DARE?</p>
+        <p class="game-subtitle">선택 후 시작 버튼을 눌러주세요!</p>
+        <div class="game-tabs">
+          <button id="tab-truth" class="tab truth" onclick="App.setMode('truth')">
+            <img class="tab-icon" src="https://www.figma.com/api/mcp/asset/a1671351-1cd8-4b48-8453-9fc297184db5" alt="">
+            Truth
+          </button>
+          <button id="tab-dare" class="tab dare active" onclick="App.setMode('dare')">
+            <img class="tab-icon" src="https://www.figma.com/api/mcp/asset/887d8f36-2dcd-493f-890e-13cd91e96727" alt="">
+            Dare
+          </button>
+        </div>
+      </div>
+
+      <div class="game-card">
+        <div class="card-player-row">
+          <img class="card-player-icon" src="https://www.figma.com/api/mcp/asset/8e6c27bd-56d2-4bdb-a5a1-e3bfba0df864" alt="">
+          <span id="game-player-name">플레이어</span>
+        </div>
+        <p id="game-question">시작 버튼을 눌러주세요!</p>
+      </div>
+
+      <div class="game-footer">
+        <button class="btn-home" onclick="App.showResults()">
+          <img src="https://www.figma.com/api/mcp/asset/93caaa5a-d658-4d2b-8ac2-1fd4894cb2ce" alt="홈">
+        </button>
+        <button class="btn-start" onclick="App.nextTurn()">Start</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ RESULTS ═══ -->
+  <div id="screen-results" class="screen">
+    <div id="results-inner" class="screen-inner dark">
+      <div class="top-nav">
+        <button class="btn-back inverted" onclick="App.go('screen-game')">
+          <img src="https://www.figma.com/api/mcp/asset/4f7ef3de-b3a2-42c1-8f80-7a657948f7be" alt="뒤로">
+        </button>
+      </div>
+      <div class="results-header"><p class="results-title">Game Results</p></div>
+      <div id="results-list" class="results-list"></div>
+      <div class="results-footer">
+        <button class="btn-end" onclick="App.endGame()">End Game</button>
+        <button class="btn-again" onclick="App.playAgain()">Play Again</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script src="script.js"></script>
 </body>
 </html>
