@@ -963,3 +963,44 @@ body {
 }
 .modal-btn.cancel { background: #f0f0f0; color: #666; }
 .modal-btn.confirm { background: #ff5963; color: #ffffff; }
+
+/* ===== SWIPE GESTURE ===== */
+/* Allow JS to handle horizontal swipe; browser handles vertical scroll */
+.ob-screen { touch-action: pan-y; }
+
+/* ===== DARK MODE THEME ===== */
+
+/* Backgrounds */
+[data-theme="dark"] #screen-ob1 .screen-inner,
+[data-theme="dark"] #screen-ob2 .screen-inner,
+[data-theme="dark"] #screen-ob3 .screen-inner,
+[data-theme="dark"] #screen-level .screen-inner,
+[data-theme="dark"] #screen-setup .screen-inner { background: #1a1a1a; }
+
+/* OB screens: description + nav */
+[data-theme="dark"] .ob-desc { color: rgba(255,255,255,0.75); }
+[data-theme="dark"] .screen-inner .btn-skip { color: rgba(255,255,255,0.65); }
+[data-theme="dark"] .screen-inner .skip-icon { filter: brightness(0) invert(1); }
+[data-theme="dark"] #screen-ob2 .btn-back img,
+[data-theme="dark"] #screen-ob3 .btn-back img { filter: brightness(0) invert(1); }
+
+/* Level select: toggle + title + cards */
+[data-theme="dark"] .toggle-btn { background: rgba(200,200,216,0.16); }
+[data-theme="dark"] .level-title,
+[data-theme="dark"] .level-sub { color: white; }
+[data-theme="dark"] .level-card.easy   { background: #8bc351; }
+[data-theme="dark"] .level-card.normal { background: #f1c40a; }
+[data-theme="dark"] .level-card.hard   { background: #ff5963; }
+[data-theme="dark"] .level-card .level-name,
+[data-theme="dark"] .level-card .level-desc { color: white !important; }
+[data-theme="dark"] .level-card .level-icon { background: white !important; }
+[data-theme="dark"] .level-card.hard .lock-icon { background: white !important; }
+
+/* Setup: title, input, player list, back button */
+[data-theme="dark"] .setup-title,
+[data-theme="dark"] .setup-subtitle { color: white; }
+[data-theme="dark"] .setup-input { background: white; color: #333; }
+[data-theme="dark"] .setup-input::placeholder { color: rgba(0,0,0,0.35); }
+[data-theme="dark"] .player-item { background: rgba(255,89,99,0.2); color: white; }
+[data-theme="dark"] .btn-delete { color: white; }
+[data-theme="dark"] #screen-setup .btn-back img { filter: brightness(0) invert(1); }
