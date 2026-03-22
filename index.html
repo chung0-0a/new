@@ -4,13 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
-  <title>Lotto Number Generator</title>
+  <title>진실 또는 도전</title>
 </head>
 <body>
   <div class="container">
-    <h1>로또 번호 추첨기</h1>
-    <button id="generateButton">번호 만들기</button>
-    <div id="result"></div>
+    <h1>🎮 진실 또는 도전</h1>
+    <p class="subtitle">Truth or Dare</p>
+
+    <div class="difficulty-section">
+      <label class="difficulty-label">난이도 선택</label>
+      <div class="difficulty-buttons">
+        <button class="diff-btn active" data-level="easy">쉬움</button>
+        <button class="diff-btn" data-level="medium">보통</button>
+        <button class="diff-btn" data-level="hard">어려움</button>
+      </div>
+    </div>
+
+    <div class="choice-section">
+      <button id="truthButton" class="choice-btn truth-btn">
+        <span class="btn-icon">💬</span>
+        <span class="btn-text">진실</span>
+        <span class="btn-sub">Truth</span>
+      </button>
+      <button id="dareButton" class="choice-btn dare-btn">
+        <span class="btn-icon">🔥</span>
+        <span class="btn-text">도전</span>
+        <span class="btn-sub">Dare</span>
+      </button>
+    </div>
+
+    <div id="cardArea" class="card-area hidden">
+      <div id="card" class="card">
+        <div class="card-type" id="cardType"></div>
+        <p id="cardContent"></p>
+        <button id="nextButton" class="next-btn">다음 카드 뽑기 🎲</button>
+      </div>
+    </div>
+
+    <div class="history-section" id="historySection">
+      <h3>최근 기록</h3>
+      <ul id="historyList"></ul>
+      <button id="clearHistory" class="clear-btn">기록 지우기</button>
+    </div>
   </div>
   <script src="script.js"></script>
 </body>
