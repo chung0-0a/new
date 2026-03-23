@@ -135,21 +135,29 @@ body {
 .screen-inner.white { background: #ffffff; }
 .screen-inner.dark  { background: #1a1a1a; }
 
-/* Dark/light mode on game + results */
-[data-theme="light"] #game-inner    { background: #f9f9f9; }
-[data-theme="light"] #results-inner { background: #f9f9f9; }
-[data-theme="light"] .game-title, [data-theme="light"] .game-subtitle,
-[data-theme="light"] #game-player-name, [data-theme="light"] #game-question { color: #333; }
-[data-theme="light"] .game-card { border-color: rgba(0,0,0,0.1); }
-[data-theme="light"] .card-player-row { color: #999; }
-[data-theme="light"] .card-player-icon { opacity: 0.5; }
-[data-theme="light"] .btn-home { border-color: rgba(0,0,0,0.2); }
-[data-theme="light"] .btn-home img { filter: invert(1) brightness(0); }
-[data-theme="light"] .results-title { color: #333; }
-[data-theme="light"] .result-item { background: rgba(0,0,0,0.05); }
-[data-theme="light"] .result-name { color: #333; }
-[data-theme="light"] .result-stats { color: #888; }
-[data-theme="light"] .btn-end { background: rgba(0,0,0,0.08); color: #333; }
+/* ── Light mode: game screen ── */
+[data-theme="light"] #game-inner    { background: #ffffff; }
+[data-theme="light"] .game-title    { color: #ff5963; }
+[data-theme="light"] .game-subtitle { color: #ff5963; }
+[data-theme="light"] #game-player-name { color: rgba(255,89,99,0.7); }
+[data-theme="light"] #game-question { color: #ff5963; }
+[data-theme="light"] .game-card     { border-color: rgba(255,89,99,0.3); background: #fff; }
+[data-theme="light"] .card-player-row { color: rgba(255,89,99,0.65); }
+[data-theme="light"] .card-player-icon { opacity: 0.7; }
+[data-theme="light"] .btn-home      { border-color: rgba(255,89,99,0.35); }
+[data-theme="light"] .btn-home img  { filter: brightness(0) saturate(100%) invert(42%) sepia(87%) saturate(500%) hue-rotate(310deg); }
+[data-theme="light"] .tab.truth     { background: rgba(139,195,81,0.12); }
+[data-theme="light"] .tab.truth.active { background: #8bc351; color: #fff; }
+[data-theme="light"] .tab.dare      { background: rgba(255,89,99,0.1); color: #ff5963; }
+[data-theme="light"] .tab.dare.active  { background: #ff5963; color: #fff; }
+/* ── Light mode: results screen ── */
+[data-theme="light"] #results-inner { background: #ffffff; }
+[data-theme="light"] .results-title { color: #ff5963; }
+[data-theme="light"] .result-item   { background: #ff5963; }
+[data-theme="light"] .result-name   { color: #ffffff; }
+[data-theme="light"] .result-stats  { color: rgba(255,255,255,0.85); }
+[data-theme="light"] .btn-end       { background: transparent; border: 2px solid #8bc351; color: #8bc351; }
+[data-theme="light"] .btn-again     { background: #ff5963; border: none; color: #ffffff; }
 
 /* ===== SPLASH ===== */
 #screen-splash { background: #ff5963; }
@@ -909,20 +917,20 @@ body {
 }
 .result-item {
   height: 56px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.9);
   border-radius: 10px;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 18px; flex-shrink: 0;
 }
 .result-name {
   font-family: 'GmarketSans', sans-serif;
-  font-size: 15px; font-weight: 700; color: #ffffff;
+  font-size: 15px; font-weight: 700; color: #333;
   letter-spacing: -0.3px;
 }
 .result-stats {
   font-family: 'Pretendard', sans-serif;
   font-size: 13px; font-weight: 400;
-  color: rgba(255,255,255,0.6); letter-spacing: -0.2px;
+  color: rgba(0,0,0,0.55); letter-spacing: -0.2px;
 }
 .results-footer {
   flex-shrink: 0; display: flex;
@@ -930,7 +938,7 @@ body {
 }
 .btn-end {
   flex: 1; height: 56px;
-  background: rgba(255,255,255,0.12); border: none; border-radius: 10px;
+  background: #8bc351; border: none; border-radius: 10px;
   color: #ffffff;
   font-family: 'GmarketSans', sans-serif;
   font-size: 15px; font-weight: 700;
@@ -939,8 +947,8 @@ body {
 .btn-end:active { opacity: 0.85; }
 .btn-again {
   flex: 1; height: 56px;
-  background: #ff5963; border: none; border-radius: 10px;
-  color: #ffffff;
+  background: rgba(255,255,255,0.88); border: none; border-radius: 10px;
+  color: #ff5963;
   font-family: 'GmarketSans', sans-serif;
   font-size: 15px; font-weight: 700;
   cursor: pointer; transition: opacity 0.15s;
@@ -997,9 +1005,13 @@ body {
 [data-theme="dark"] .toggle-btn { background: rgba(200,200,216,0.16); }
 [data-theme="dark"] .level-title,
 [data-theme="dark"] .level-sub { color: white; }
-[data-theme="dark"] .level-card.easy   { background: rgba(139,195,81,0.15); }
-[data-theme="dark"] .level-card.normal { background: rgba(241,196,10,0.15); }
-[data-theme="dark"] .level-card.hard   { background: rgba(255,89,99,0.15); }
+[data-theme="dark"] .level-card.easy   { background: #8bc351; }
+[data-theme="dark"] .level-card.normal { background: #f1c40a; }
+[data-theme="dark"] .level-card.hard   { background: #ff5963; }
+[data-theme="dark"] .level-card .level-name,
+[data-theme="dark"] .level-card .level-desc { color: white !important; }
+[data-theme="dark"] .level-card .level-icon { background: white !important; }
+[data-theme="dark"] .level-card .lock-icon  { background: white !important; }
 
 /* Setup: title, input, player list, back button */
 [data-theme="dark"] .setup-title,
