@@ -130,9 +130,8 @@ const App = {
     const btn = document.getElementById('theme-toggle');
     btn.classList.toggle('active', !this.isDarkTheme);
 
-    // moon icon = dark mode, sun icon = light mode
     document.querySelector('.sun-icon').src = this.isDarkTheme
-      ? 'https://www.figma.com/api/mcp/asset/99646c9c-247b-4ea6-84b4-3c165e0cef1c'
+      ? 'https://www.figma.com/api/mcp/asset/72229a0d-5d0a-4aec-8c26-699481aee887'
       : 'https://www.figma.com/api/mcp/asset/eb0b002c-a0d3-4b06-a9cc-b1ef337948ce';
   },
 
