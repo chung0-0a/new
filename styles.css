@@ -636,22 +636,12 @@ body {
   overflow: hidden;
 }
 
-/* Question / Exclamation illustration — CSS cards */
-.level-illus { display: flex; align-items: center; justify-content: center; gap: 10px; }
-.illus-card {
-  width: 72px; height: 90px;
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'GmarketSans', sans-serif;
-  font-size: 40px; font-weight: 700; color: #ffffff;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-.illus-card-q { background: #ff5963; transform: rotate(-8deg); }
-.illus-card-e { background: #8bc351; transform: rotate(5deg); }
-
-/* Dark mode variants */
-[data-theme="dark"] .illus-card-q { background: rgba(255,255,255,0.12); color: #aaa; box-shadow: none; }
-[data-theme="dark"] .illus-card-e { background: #333; color: #ffffff; box-shadow: none; }
+/* Question / Exclamation illustration — Figma assets (112×74px native) */
+.level-illus { display: flex; align-items: center; justify-content: center; }
+.illus-img   { width: 150px; height: auto; object-fit: contain; }
+.illus-dark  { display: none; }
+[data-theme="dark"] .illus-dark  { display: block; }
+[data-theme="dark"] .illus-light { display: none; }
 
 /* legacy alias */
 .level-card-q {
