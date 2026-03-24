@@ -22,35 +22,6 @@
   src: url('./fonts/GmarketSansLight.woff2') format('woff2');
 }
 
-/* Pretendard — local subset files */
-@font-face {
-  font-family: 'Pretendard';
-  font-weight: 700;
-  font-style: normal;
-  font-display: block;
-  src: url('./fonts/Pretendard-Bold.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Pretendard';
-  font-weight: 500;
-  font-style: normal;
-  font-display: block;
-  src: url('./fonts/Pretendard-Medium.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Pretendard';
-  font-weight: 400;
-  font-style: normal;
-  font-display: block;
-  src: url('./fonts/Pretendard-Regular.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Pretendard';
-  font-weight: 300;
-  font-style: normal;
-  font-display: block;
-  src: url('./fonts/Pretendard-Regular.woff2') format('woff2');
-}
 
 /* ===== RESET ===== */
 *, *::before, *::after {
@@ -67,7 +38,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  font-family: 'Pretendard', 'GmarketSans', 'Apple SD Gothic Neo', sans-serif;
+  font-family: 'GmarketSans', 'Apple SD Gothic Neo', sans-serif;
 }
 
 /* ===== APP WRAPPER ===== */
@@ -297,7 +268,7 @@ body {
   letter-spacing: -0.4px;
 }
 .ob-desc {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 14px;
   font-weight: 500;
   color: #666666;
@@ -511,7 +482,7 @@ body {
   text-align: center; letter-spacing: -0.28px;
 }
 .ad-update {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 14px; font-weight: 500; color: #f1c40a;
   text-align: center;
 }
@@ -530,7 +501,7 @@ body {
   letter-spacing: -0.32px;
 }
 .plan-desc {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 12px; font-weight: 500; color: #666;
   margin-top: 7px;
 }
@@ -540,7 +511,7 @@ body {
   text-align: right;
 }
 .plan-period {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 12px; font-weight: 500; color: #666;
 }
 
@@ -577,13 +548,13 @@ body {
   font-size: 14px; font-weight: 700; color: white;
 }
 .benefit-desc {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.85);
 }
 
 .ad-skip-btn {
   background: none; border: none;
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 13px; font-weight: 500;
   color: #bbb; cursor: pointer;
   padding: 8px 0;
@@ -642,7 +613,9 @@ body {
 
 /* Question / Exclamation illustration */
 .level-illus { display: flex; align-items: center; justify-content: center; }
-.illus-img { width: 240px; height: auto; object-fit: contain; }
+.illus-img { width: 160px; height: auto; object-fit: contain; }
+[data-theme="light"] .illus-dark  { display: none; }
+[data-theme="dark"]  .illus-light { display: none; }
 
 /* legacy alias */
 .level-card-q {
@@ -665,7 +638,7 @@ body {
   letter-spacing: -0.5px;
 }
 .level-sub {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 16px; font-weight: 500; color: #ff5963;
   margin-top: 4px; letter-spacing: -0.5px;
 }
@@ -704,7 +677,7 @@ body {
   line-height: 22px; letter-spacing: -0.5px;
 }
 .level-desc {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 13px; font-weight: 500;
   letter-spacing: -0.5px; margin-top: 4px;
 }
@@ -732,7 +705,7 @@ body {
   line-height: 22px;
 }
 .banner-desc {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.85);
 }
 
@@ -762,7 +735,7 @@ body {
   text-align: center; letter-spacing: -0.5px;
 }
 .setup-subtitle {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 16px; font-weight: 500; color: #ff5963;
   text-align: center; letter-spacing: -0.5px;
 }
@@ -853,16 +826,33 @@ body {
   flex: 1; height: 47px;
   border: none; border-radius: 10px;
   font-family: 'GmarketSans', sans-serif;
-  font-size: 16px; font-weight: 700; color: #ffffff;
+  font-size: 17px; font-weight: 700;
   cursor: pointer; letter-spacing: -0.5px;
   display: flex; align-items: center; justify-content: center;
-  gap: 6px; transition: background 0.2s;
+  gap: 6px; transition: background 0.2s, color 0.2s;
 }
-.tab-icon { width: 20px; height: 20px; object-fit: contain; }
-.tab.truth { background: rgba(139,195,81,0.2); }
-.tab.truth.active { background: #8bc351; }
-.tab.dare { background: rgba(255,89,99,0.2); }
-.tab.dare.active { background: #ff5963; }
+.tab-icon {
+  width: 20px; height: 20px; flex-shrink: 0;
+  -webkit-mask-size: contain; mask-size: contain;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center; mask-position: center;
+}
+.truth-icon {
+  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/a1671351-1cd8-4b48-8453-9fc297184db5');
+  mask-image: url('https://www.figma.com/api/mcp/asset/a1671351-1cd8-4b48-8453-9fc297184db5');
+}
+.dare-icon {
+  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/887d8f36-2dcd-493f-890e-13cd91e96727');
+  mask-image: url('https://www.figma.com/api/mcp/asset/887d8f36-2dcd-493f-890e-13cd91e96727');
+}
+.tab.truth { background: rgba(139,195,81,0.2); color: #8bc351; }
+.tab.truth .tab-icon { background: #8bc351; }
+.tab.truth.active { background: #8bc351; color: #ffffff; }
+.tab.truth.active .tab-icon { background: #ffffff; }
+.tab.dare { background: rgba(255,89,99,0.2); color: #ff5963; }
+.tab.dare .tab-icon { background: #ff5963; }
+.tab.dare.active { background: #ff5963; color: #ffffff; }
+.tab.dare.active .tab-icon { background: #ffffff; }
 
 /* ===== GAME CARD ===== */
 .game-card {
@@ -886,7 +876,7 @@ body {
   flex: 1; display: flex;
   align-items: center; justify-content: center;
   color: #ffffff;
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 16px; font-weight: 500;
   text-align: center; line-height: 1.7;
   letter-spacing: -0.3px; white-space: pre-wrap;
@@ -946,7 +936,7 @@ body {
   letter-spacing: -0.3px;
 }
 .result-stats {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 13px; font-weight: 400;
   color: rgba(0,0,0,0.55); letter-spacing: -0.2px;
 }
@@ -986,7 +976,7 @@ body {
   text-align: center; display: flex; flex-direction: column; gap: 16px;
 }
 .modal-msg {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 15px; font-weight: 500; color: #333;
   line-height: 1.5; letter-spacing: -0.3px;
 }
