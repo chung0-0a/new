@@ -640,29 +640,9 @@ body {
   overflow: hidden;
 }
 
-/* Question / Exclamation illustration cards */
-.level-illus { display: flex; gap: 4px; align-items: center; }
-.illus-card {
-  width: 112px; height: 74px;
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-}
-.illus-card span {
-  font-family: 'GmarketSans', sans-serif;
-  font-size: 33px; font-weight: 700; color: white;
-  display: inline-block;
-}
-.card-q {
-  background: #ff5963;
-  transform: rotate(-5deg);
-  margin-right: -8px;
-  z-index: 1;
-}
-.card-q span { transform: rotate(-3deg); }
-.card-excl {
-  background: #ff7359;
-  transform: rotate(5deg);
-}
+/* Question / Exclamation illustration */
+.level-illus { display: flex; align-items: center; justify-content: center; }
+.illus-img { width: 240px; height: auto; object-fit: contain; }
 
 /* legacy alias */
 .level-card-q {
