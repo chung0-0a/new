@@ -7,7 +7,7 @@
   <title>Truth or Dare</title>
 </head>
 <body>
-<div class="app" data-theme="dark">
+<div class="app" data-theme="light">
 
   <!-- ═══ SPLASH ═══ -->
   <div id="screen-splash" class="screen active">
@@ -78,22 +78,21 @@
           <div class="ob2-input-row">
             <div class="ob2-input-fake">Player Add</div>
             <div class="ob2-add-btn">
-              <div class="ob2-add-inner">
-                <img src="https://www.figma.com/api/mcp/asset/425b453a-b40f-48c2-bba5-a6fd70f381da" alt="+" style="width:14px;height:14px;">
-              </div>
+              <img src="https://www.figma.com/api/mcp/asset/4d8cbb23-3ea9-476c-95c2-2c81a3fb839a" alt="" style="position:absolute;width:28px;height:28px;">
+              <img src="https://www.figma.com/api/mcp/asset/a0d27508-a4cb-4efa-8e97-96f1cc0c64a2" alt="+" style="width:14px;height:14px;position:relative;z-index:1;">
             </div>
           </div>
           <div class="ob2-player-item">
             <span>Player1</span>
-            <div class="ob2-trash" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/7223c150-e608-47c6-a3c8-0c685918bab5');mask-image:url('https://www.figma.com/api/mcp/asset/7223c150-e608-47c6-a3c8-0c685918bab5');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#5f5f5f;width:14px;height:14px;"></div>
+            <div class="ob2-trash" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/b0e00563-7ecf-4c09-b07b-bf5c16514ee6');mask-image:url('https://www.figma.com/api/mcp/asset/b0e00563-7ecf-4c09-b07b-bf5c16514ee6');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#5f5f5f;width:14px;height:14px;"></div>
           </div>
           <div class="ob2-player-item">
             <span>Player2</span>
-            <div class="ob2-trash" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/7223c150-e608-47c6-a3c8-0c685918bab5');mask-image:url('https://www.figma.com/api/mcp/asset/7223c150-e608-47c6-a3c8-0c685918bab5');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#5f5f5f;width:14px;height:14px;"></div>
+            <div class="ob2-trash" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/b0e00563-7ecf-4c09-b07b-bf5c16514ee6');mask-image:url('https://www.figma.com/api/mcp/asset/b0e00563-7ecf-4c09-b07b-bf5c16514ee6');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#5f5f5f;width:14px;height:14px;"></div>
           </div>
           <div class="ob2-player-item ob2-player-faded">
             <span>Player3</span>
-            <div class="ob2-trash" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/7223c150-e608-47c6-a3c8-0c685918bab5');mask-image:url('https://www.figma.com/api/mcp/asset/7223c150-e608-47c6-a3c8-0c685918bab5');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#5f5f5f;width:14px;height:14px;"></div>
+            <div class="ob2-trash" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/b0e00563-7ecf-4c09-b07b-bf5c16514ee6');mask-image:url('https://www.figma.com/api/mcp/asset/b0e00563-7ecf-4c09-b07b-bf5c16514ee6');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#5f5f5f;width:14px;height:14px;"></div>
           </div>
         </div>
         <div class="ob-text">
@@ -125,16 +124,24 @@
       </div>
 
       <div class="ob-body">
-        <div class="ob3-mode-cards">
-          <div class="ob3-card selected">
-            <img class="ob3-truth-icon" src="https://www.figma.com/api/mcp/asset/a1671351-1cd8-4b48-8453-9fc297184db5" alt="truth">
-            <span class="ob3-label selected">Truth</span>
+        <div class="ob3-demo">
+          <div class="ob3-mode-cards">
+            <div class="ob3-card selected">
+              <div class="ob3-truth-icon"></div>
+              <span class="ob3-label selected">Truth</span>
+            </div>
+            <div class="ob3-card">
+              <img class="ob3-star-icon"
+                src="https://www.figma.com/api/mcp/asset/1233a63b-b4bc-4e97-a2e3-476fa2d6c792" alt="dare">
+              <span class="ob3-label">Dare</span>
+            </div>
           </div>
-          <div class="ob3-card">
-            <img class="ob3-star-icon"
-              src="https://www.figma.com/api/mcp/asset/2dd66881-15bc-41a3-aa7d-820a979cf4e5" alt="dare">
-            <span class="ob3-label">Dare</span>
+          <div class="ob3-inner-dots">
+            <span class="ob3-inner-dot"></span>
+            <span class="ob3-inner-dot"></span>
+            <span class="ob3-inner-dot"></span>
           </div>
+          <button class="ob3-start-btn" onclick="App.go('screen-ad')">Start</button>
         </div>
         <div class="ob-text">
           <p class="ob-title">Select Truth or Dare</p>
@@ -164,13 +171,17 @@
 
       <div class="ad-scroll">
         <div class="ad-illustration">
-          <div class="ad-block ad-block-green"><span class="ad-block-emoji">🎮</span></div>
+          <div class="ad-block ad-block-green">
+            <div style="width:33px;height:33px;background:white;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/b124a0fc-bcb5-46c3-9712-c14efedcc864');mask-image:url('https://www.figma.com/api/mcp/asset/b124a0fc-bcb5-46c3-9712-c14efedcc864');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
+          </div>
           <div class="ad-block ad-block-orange ad-block-tall"><span class="ad-block-text">Ad</span></div>
-          <div class="ad-block ad-block-pink"><span class="ad-block-emoji">🔥</span></div>
-          <span class="ad-sparkle" style="top:0;left:30px;color:#ff59c8;">✦</span>
-          <span class="ad-sparkle" style="top:10px;right:20px;color:#8bc351;">✦</span>
-          <span class="ad-sparkle" style="bottom:0;left:10px;color:#8bc351;">✦</span>
-          <span class="ad-sparkle" style="bottom:0;right:5px;color:#ddd;">✦</span>
+          <div class="ad-block ad-block-pink">
+            <div style="width:37px;height:37px;background:white;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/f59a1be1-1232-4ca0-be9f-7503a832ee60');mask-image:url('https://www.figma.com/api/mcp/asset/f59a1be1-1232-4ca0-be9f-7503a832ee60');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
+          </div>
+          <div class="ad-sparkle-dot" style="top:0;left:30px;background:#ff59c8;"></div>
+          <div class="ad-sparkle-dot" style="top:7px;right:20px;background:#8bc351;width:16px;height:16px;"></div>
+          <div class="ad-sparkle-dot" style="bottom:5px;left:10px;background:#8bc351;"></div>
+          <div class="ad-sparkle-dot" style="bottom:10px;right:5px;background:#ddd;"></div>
         </div>
         <div class="ad-title-row">
           <p class="ad-title">TRUTH OR DARE</p>
@@ -191,12 +202,26 @@
         <p class="ad-benefits-title">PRO 혜택</p>
         <div class="ad-benefits">
           <div class="ad-benefit-card" style="background:#ff7359;">
-            <div class="benefit-icon-area"><span class="benefit-emoji">📢</span></div>
-            <div class="benefit-info"><p class="benefit-name">광고 제거</p><p class="benefit-desc">앱 전체 광고 제거</p></div>
+            <div class="benefit-icon-area">
+              <div style="width:68px;height:68px;background:white;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/1e7841e6-d675-42ec-bd7f-76b2c73d9f49');mask-image:url('https://www.figma.com/api/mcp/asset/1e7841e6-d675-42ec-bd7f-76b2c73d9f49');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
+            </div>
+            <div class="benefit-info" style="background:linear-gradient(to right,#eb664d,#ff7359);">
+              <div style="display:flex;align-items:center;justify-content:space-between;width:100%;">
+                <div><p class="benefit-name">광고 제거</p><p class="benefit-desc">앱 전체 광고 제거</p></div>
+                <div style="width:13px;height:13px;background:white;flex-shrink:0;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/a1187fe4-fc5a-4adb-b493-89704d83f82c');mask-image:url('https://www.figma.com/api/mcp/asset/a1187fe4-fc5a-4adb-b493-89704d83f82c');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
+              </div>
+            </div>
           </div>
           <div class="ad-benefit-card" style="background:#ff59c8;">
-            <div class="benefit-icon-area"><span class="benefit-emoji">🔥</span></div>
-            <div class="benefit-info"><p class="benefit-name">HARD 모드 해제</p><p class="benefit-desc">360개의 모드 해제</p></div>
+            <div class="benefit-icon-area">
+              <div style="width:60px;height:60px;background:white;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/f59a1be1-1232-4ca0-be9f-7503a832ee60');mask-image:url('https://www.figma.com/api/mcp/asset/f59a1be1-1232-4ca0-be9f-7503a832ee60');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
+            </div>
+            <div class="benefit-info" style="background:linear-gradient(to right,#eb49b6,#ff59c8);">
+              <div style="display:flex;align-items:center;justify-content:space-between;width:100%;">
+                <div><p class="benefit-name">HARD 모드 해제</p><p class="benefit-desc">360개의 모드 해제</p></div>
+                <div style="width:13px;height:13px;background:white;flex-shrink:0;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/a1187fe4-fc5a-4adb-b493-89704d83f82c');mask-image:url('https://www.figma.com/api/mcp/asset/a1187fe4-fc5a-4adb-b493-89704d83f82c');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
+              </div>
+            </div>
           </div>
         </div>
         <button class="ad-skip-btn" onclick="App.go('screen-level')">지금은 괜찮아요</button>
@@ -212,8 +237,7 @@
       <div class="level-topbar">
         <div class="theme-toggle-row">
           <img class="sun-icon"
-            src="https://www.figma.com/api/mcp/asset/99646c9c-247b-4ea6-84b4-3c165e0cef1c" alt="모드">
-          <!-- active = 라이트모드 ON, 기본(no active) = 다크모드 -->
+            src="https://www.figma.com/api/mcp/asset/72229a0d-5d0a-4aec-8c26-699481aee887" alt="모드">
           <button id="theme-toggle" class="toggle-btn" onclick="App.toggleTheme()" aria-label="다크/라이트 모드">
             <span class="toggle-knob"></span>
           </button>
@@ -238,7 +262,7 @@
           <button class="level-card easy" onclick="App.selectLevel('easy')">
             <div class="level-card-left">
               <div class="level-icon"
-                style="background:#8bc351;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/161f949d-4e11-4d28-9bdf-6fb608696383');mask-image:url('https://www.figma.com/api/mcp/asset/161f949d-4e11-4d28-9bdf-6fb608696383');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;">
+                style="background:#8bc351;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/b124a0fc-bcb5-46c3-9712-c14efedcc864');mask-image:url('https://www.figma.com/api/mcp/asset/b124a0fc-bcb5-46c3-9712-c14efedcc864');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;">
               </div>
               <div class="level-info">
                 <p class="level-name" style="color:#8bc351;">Easy</p>
@@ -251,7 +275,7 @@
           <button class="level-card normal" onclick="App.selectLevel('normal')">
             <div class="level-card-left">
               <div class="level-icon"
-                style="background:#f1c40a;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/77ae13fa-1477-4f6c-9c94-eefda937d4e2');mask-image:url('https://www.figma.com/api/mcp/asset/77ae13fa-1477-4f6c-9c94-eefda937d4e2');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;width:41px;height:36px;">
+                style="background:#f1c40a;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/b10cabce-b5f3-41a2-8aa6-0aee6a9ef9d6');mask-image:url('https://www.figma.com/api/mcp/asset/b10cabce-b5f3-41a2-8aa6-0aee6a9ef9d6');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;width:41px;height:36px;">
               </div>
               <div class="level-info">
                 <p class="level-name" style="color:#f1c40a;">Normal</p>
@@ -264,21 +288,21 @@
           <button class="level-card hard" onclick="App.selectLevel('hard')">
             <div class="level-card-left">
               <div class="level-icon"
-                style="background:#ff5963;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/3dd63cda-456a-4206-8856-0aa5fdd1fa5e');mask-image:url('https://www.figma.com/api/mcp/asset/3dd63cda-456a-4206-8856-0aa5fdd1fa5e');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;width:37px;height:37px;">
+                style="background:#ff5963;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/59969a95-033a-407c-989a-235ec71ef263');mask-image:url('https://www.figma.com/api/mcp/asset/59969a95-033a-407c-989a-235ec71ef263');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;width:37px;height:37px;">
               </div>
               <div class="level-info">
                 <p class="level-name" style="color:#ff5963;">Hard</p>
                 <p class="level-desc" style="color:#ff5963;">한계를 시험하는 도전과 과감한 질문!</p>
               </div>
             </div>
-            <div class="lock-icon" style="width:17px;height:17px;background:#ff5963;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/4f432dab-3906-438e-912d-21b3c6e7d1f4');mask-image:url('https://www.figma.com/api/mcp/asset/4f432dab-3906-438e-912d-21b3c6e7d1f4');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;flex-shrink:0;"></div>
+            <div class="lock-icon" style="width:17px;height:17px;background:#ff5963;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/921486ba-17be-41ba-a564-0b6b5c296c4e');mask-image:url('https://www.figma.com/api/mcp/asset/921486ba-17be-41ba-a564-0b6b5c296c4e');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;flex-shrink:0;"></div>
           </button>
         </div>
       </div>
 
       <!-- 하단 광고 배너 -->
       <button class="level-ad-banner" onclick="App.go('screen-ad')">
-        <div style="width:45px;height:45px;background:white;flex-shrink:0;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/5280b10b-82f2-4739-a11f-0d2409e6e018');mask-image:url('https://www.figma.com/api/mcp/asset/5280b10b-82f2-4739-a11f-0d2409e6e018');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
+        <div style="width:45px;height:45px;background:white;flex-shrink:0;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/4c981f1c-c620-416d-9313-460f376ca85d');mask-image:url('https://www.figma.com/api/mcp/asset/4c981f1c-c620-416d-9313-460f376ca85d');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
         <div class="banner-text">
           <p class="banner-title">광고제거</p>
           <p class="banner-desc">광고 제거하고 편하게 사용하세요!</p>

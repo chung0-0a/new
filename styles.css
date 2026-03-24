@@ -135,21 +135,29 @@ body {
 .screen-inner.white { background: #ffffff; }
 .screen-inner.dark  { background: #1a1a1a; }
 
-/* Dark/light mode on game + results */
-[data-theme="light"] #game-inner    { background: #f9f9f9; }
-[data-theme="light"] #results-inner { background: #f9f9f9; }
-[data-theme="light"] .game-title, [data-theme="light"] .game-subtitle,
-[data-theme="light"] #game-player-name, [data-theme="light"] #game-question { color: #333; }
-[data-theme="light"] .game-card { border-color: rgba(0,0,0,0.1); }
-[data-theme="light"] .card-player-row { color: #999; }
-[data-theme="light"] .card-player-icon { opacity: 0.5; }
-[data-theme="light"] .btn-home { border-color: rgba(0,0,0,0.2); }
-[data-theme="light"] .btn-home img { filter: invert(1) brightness(0); }
-[data-theme="light"] .results-title { color: #333; }
-[data-theme="light"] .result-item { background: rgba(0,0,0,0.05); }
-[data-theme="light"] .result-name { color: #333; }
-[data-theme="light"] .result-stats { color: #888; }
-[data-theme="light"] .btn-end { background: rgba(0,0,0,0.08); color: #333; }
+/* ── Light mode: game screen ── */
+[data-theme="light"] #game-inner    { background: #ffffff; }
+[data-theme="light"] .game-title    { color: #ff5963; }
+[data-theme="light"] .game-subtitle { color: #ff5963; }
+[data-theme="light"] #game-player-name { color: rgba(255,89,99,0.7); }
+[data-theme="light"] #game-question { color: #ff5963; }
+[data-theme="light"] .game-card     { border-color: rgba(255,89,99,0.3); background: #fff; }
+[data-theme="light"] .card-player-row { color: rgba(255,89,99,0.65); }
+[data-theme="light"] .card-player-icon { opacity: 0.7; }
+[data-theme="light"] .btn-home      { border-color: rgba(255,89,99,0.35); }
+[data-theme="light"] .btn-home img  { filter: brightness(0) saturate(100%) invert(42%) sepia(87%) saturate(500%) hue-rotate(310deg); }
+[data-theme="light"] .tab.truth     { background: rgba(139,195,81,0.12); }
+[data-theme="light"] .tab.truth.active { background: #8bc351; color: #fff; }
+[data-theme="light"] .tab.dare      { background: rgba(255,89,99,0.1); color: #ff5963; }
+[data-theme="light"] .tab.dare.active  { background: #ff5963; color: #fff; }
+/* ── Light mode: results screen ── */
+[data-theme="light"] #results-inner { background: #ffffff; }
+[data-theme="light"] .results-title { color: #ff5963; }
+[data-theme="light"] .result-item   { background: #ff5963; }
+[data-theme="light"] .result-name   { color: #ffffff; }
+[data-theme="light"] .result-stats  { color: rgba(255,255,255,0.85); }
+[data-theme="light"] .btn-end       { background: transparent; border: 2px solid #8bc351; color: #8bc351; }
+[data-theme="light"] .btn-again     { background: #ff5963; border: none; color: #ffffff; }
 
 /* ===== SPLASH ===== */
 #screen-splash { background: #ff5963; }
@@ -346,10 +354,10 @@ body {
   background: #ffffff;
   border-radius: 10px;
   padding: 0 18px;
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #aaa;
+  color: #999;
   display: flex;
   align-items: center;
 }
@@ -359,6 +367,7 @@ body {
   border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
+  position: relative;
 }
 .ob2-add-btn img { width: 24px; height: 24px; object-fit: contain; }
 
@@ -379,7 +388,12 @@ body {
 .ob2-player-faded { opacity: 0.35; }
 
 /* ===== ONBOARDING 3 — MODE DEMO (dark bg) ===== */
-.ob3-mode-cards { display: flex; gap: 15px; }
+.ob3-demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ob3-mode-cards { display: flex; gap: 5px; }
 .ob3-card {
   width: 130px; height: 130px;
   background: #ffffff;
@@ -391,8 +405,16 @@ body {
   box-shadow: 0 1px 21.5px rgba(0,0,0,0.05);
 }
 .ob3-card.selected { border-color: #ff5963; }
-.ob3-truth-icon { width: 41px; height: 41px; object-fit: contain; }
-.ob3-star-icon { width: 38px; height: 38px; object-fit: contain; }
+.ob3-truth-icon {
+  width: 41px; height: 41px;
+  background: #ff5963;
+  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/a1671351-1cd8-4b48-8453-9fc297184db5');
+  mask-image: url('https://www.figma.com/api/mcp/asset/a1671351-1cd8-4b48-8453-9fc297184db5');
+  -webkit-mask-size: contain; mask-size: contain;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center; mask-position: center;
+}
+.ob3-star-icon { width: 43px; height: 43px; object-fit: contain; }
 .ob3-label {
   font-family: 'GmarketSans', sans-serif;
   font-size: 17px;
@@ -401,6 +423,29 @@ body {
   color: #c0c0c0;
 }
 .ob3-label.selected { color: #ff5963; }
+.ob3-inner-dots {
+  display: flex;
+  gap: 8px;
+  margin-top: 25px;
+}
+.ob3-inner-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: #c8c8c8;
+}
+.ob3-start-btn {
+  width: 265px; height: 56px;
+  background: #ff5963;
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: 'GmarketSans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: -0.32px;
+  margin-top: 25px;
+}
 
 /* ===== AD / PREMIUM SCREEN ===== */
 .ad-scroll {
@@ -436,6 +481,11 @@ body {
 }
 .ad-block-tall { margin-bottom: 0; }
 .ad-sparkle { position: absolute; font-size: 13px; }
+.ad-sparkle-dot {
+  position: absolute;
+  width: 13px; height: 13px;
+  border-radius: 50%;
+}
 
 .ad-title-row {
   display: flex; align-items: center; gap: 8px;
@@ -517,9 +567,10 @@ body {
 .benefit-emoji { font-size: 48px; }
 .benefit-info {
   height: 56px;
-  padding: 10px 14px;
-  display: flex; flex-direction: column; gap: 4px;
+  padding: 14px;
+  display: flex; align-items: center;
   position: relative;
+  border-radius: 0 0 10px 10px;
 }
 .benefit-name {
   font-family: 'GmarketSans', sans-serif;
@@ -595,7 +646,7 @@ body {
 }
 .illus-card span {
   font-family: 'GmarketSans', sans-serif;
-  font-size: 40px; font-weight: 700; color: white;
+  font-size: 33px; font-weight: 700; color: white;
   display: inline-block;
 }
 .card-q {
@@ -603,6 +654,11 @@ body {
   transform: rotate(-3deg);
   margin-right: -6px;
   z-index: 1;
+  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/fbc26b21-54c5-477b-8df5-541a64264b49');
+  mask-image: url('https://www.figma.com/api/mcp/asset/fbc26b21-54c5-477b-8df5-541a64264b49');
+  -webkit-mask-size: cover; mask-size: cover;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center; mask-position: center;
 }
 .card-q span { transform: rotate(-5deg); }
 .card-excl {
@@ -900,20 +956,20 @@ body {
 }
 .result-item {
   height: 56px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.9);
   border-radius: 10px;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 18px; flex-shrink: 0;
 }
 .result-name {
   font-family: 'GmarketSans', sans-serif;
-  font-size: 15px; font-weight: 700; color: #ffffff;
+  font-size: 15px; font-weight: 700; color: #333;
   letter-spacing: -0.3px;
 }
 .result-stats {
   font-family: 'Pretendard', sans-serif;
   font-size: 13px; font-weight: 400;
-  color: rgba(255,255,255,0.6); letter-spacing: -0.2px;
+  color: rgba(0,0,0,0.55); letter-spacing: -0.2px;
 }
 .results-footer {
   flex-shrink: 0; display: flex;
@@ -921,7 +977,7 @@ body {
 }
 .btn-end {
   flex: 1; height: 56px;
-  background: rgba(255,255,255,0.12); border: none; border-radius: 10px;
+  background: #8bc351; border: none; border-radius: 10px;
   color: #ffffff;
   font-family: 'GmarketSans', sans-serif;
   font-size: 15px; font-weight: 700;
@@ -930,8 +986,8 @@ body {
 .btn-end:active { opacity: 0.85; }
 .btn-again {
   flex: 1; height: 56px;
-  background: #ff5963; border: none; border-radius: 10px;
-  color: #ffffff;
+  background: rgba(255,255,255,0.88); border: none; border-radius: 10px;
+  color: #ff5963;
   font-family: 'GmarketSans', sans-serif;
   font-size: 15px; font-weight: 700;
   cursor: pointer; transition: opacity 0.15s;
@@ -994,7 +1050,7 @@ body {
 [data-theme="dark"] .level-card .level-name,
 [data-theme="dark"] .level-card .level-desc { color: white !important; }
 [data-theme="dark"] .level-card .level-icon { background: white !important; }
-[data-theme="dark"] .level-card.hard .lock-icon { background: white !important; }
+[data-theme="dark"] .level-card .lock-icon  { background: white !important; }
 
 /* Setup: title, input, player list, back button */
 [data-theme="dark"] .setup-title,

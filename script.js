@@ -72,7 +72,7 @@ const App = {
   currentPlayerIndex: 0,
   currentMode: 'dare',
   currentLevel: 'normal',
-  isDarkTheme: true,
+  isDarkTheme: false,
   obIndex: 0,
 
   _usedTruth: new Set(),
@@ -130,10 +130,10 @@ const App = {
     const btn = document.getElementById('theme-toggle');
     btn.classList.toggle('active', !this.isDarkTheme);
 
-    // moon icon = dark mode, sun icon = light mode
+    // dark mode → moon icon, light mode → sun icon
     document.querySelector('.sun-icon').src = this.isDarkTheme
-      ? 'https://www.figma.com/api/mcp/asset/99646c9c-247b-4ea6-84b4-3c165e0cef1c'
-      : 'https://www.figma.com/api/mcp/asset/eb0b002c-a0d3-4b06-a9cc-b1ef337948ce';
+      ? 'https://www.figma.com/api/mcp/asset/e08ad0d7-b3da-4d67-acfe-69c8b80676c5'
+      : 'https://www.figma.com/api/mcp/asset/72229a0d-5d0a-4aec-8c26-699481aee887';
   },
 
   /* ── Player Management ── */
