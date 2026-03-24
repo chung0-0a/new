@@ -657,11 +657,6 @@ body {
   transform: rotate(-3deg);
   margin-right: -6px;
   z-index: 1;
-  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/fbc26b21-54c5-477b-8df5-541a64264b49');
-  mask-image: url('https://www.figma.com/api/mcp/asset/fbc26b21-54c5-477b-8df5-541a64264b49');
-  -webkit-mask-size: cover; mask-size: cover;
-  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
-  -webkit-mask-position: center; mask-position: center;
 }
 .card-q span { transform: rotate(-5deg); }
 .card-excl {

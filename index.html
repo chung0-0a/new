@@ -172,7 +172,26 @@
       <div class="ad-scroll">
         <div class="ad-illustration">
           <div class="ad-block ad-block-green">
-            <div style="width:33px;height:33px;background:white;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/b124a0fc-bcb5-46c3-9712-c14efedcc864');mask-image:url('https://www.figma.com/api/mcp/asset/b124a0fc-bcb5-46c3-9712-c14efedcc864');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
+            <svg width="38" height="30" viewBox="0 0 38 30" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <!-- controller body -->
+              <path d="M6 8 Q2 8 1 14 L3 24 Q4 28 7 28 Q10 28 12 24 L14 18 H24 L26 24 Q28 28 31 28 Q34 28 35 24 L37 14 Q36 8 32 8 Z" fill="white"/>
+              <!-- d-pad vertical -->
+              <rect x="8.5" y="11" width="3" height="9" rx="1" fill="#8bc351"/>
+              <!-- d-pad horizontal -->
+              <rect x="5.5" y="14" width="9" height="3" rx="1" fill="#8bc351"/>
+              <!-- action button circle 1 -->
+              <circle cx="27" cy="13" r="2.2" fill="#8bc351"/>
+              <!-- action button circle 2 -->
+              <circle cx="31" cy="16" r="2.2" fill="#8bc351"/>
+              <!-- action button circle 3 -->
+              <circle cx="27" cy="19" r="2.2" fill="#8bc351"/>
+              <!-- action button circle 4 -->
+              <circle cx="23" cy="16" r="2.2" fill="#8bc351"/>
+              <!-- left bumper -->
+              <rect x="5" y="5" width="9" height="4" rx="2" fill="white"/>
+              <!-- right bumper -->
+              <rect x="24" y="5" width="9" height="4" rx="2" fill="white"/>
+            </svg>
           </div>
           <div class="ad-block ad-block-orange ad-block-tall"><span class="ad-block-text">Ad</span></div>
           <div class="ad-block ad-block-pink">
@@ -337,11 +356,9 @@
             <input id="setup-input" class="setup-input" type="text"
               placeholder="Enter Participant name" maxlength="10"
               onkeydown="if(event.key==='Enter') App.addPlayer()">
-            <!-- 빨간 + 버튼 (Frame3 구조) -->
+            <!-- 빨간 + 버튼 -->
             <button class="setup-add-btn" onclick="App.addPlayer()">
-              <div class="add-inner">
-                <img src="https://www.figma.com/api/mcp/asset/61a81b63-9c04-46a7-99cd-7c131cac11c5" alt="+" style="width:14px;height:14px;">
-              </div>
+              <img src="https://www.figma.com/api/mcp/asset/81cc6b50-7975-4de4-860d-5020e37ebd0b" alt="+">
             </button>
           </div>
           <div id="setup-player-list" class="setup-player-list"></div>
