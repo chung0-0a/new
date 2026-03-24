@@ -129,11 +129,7 @@ const App = {
 
     const btn = document.getElementById('theme-toggle');
     btn.classList.toggle('active', !this.isDarkTheme);
-
-    // dark mode → moon icon, light mode → sun icon
-    document.querySelector('.sun-icon').src = this.isDarkTheme
-      ? 'https://www.figma.com/api/mcp/asset/e08ad0d7-b3da-4d67-acfe-69c8b80676c5'
-      : 'https://www.figma.com/api/mcp/asset/72229a0d-5d0a-4aec-8c26-699481aee887';
+    // icon swap handled by CSS: .icon-light/.icon-dark toggled via data-theme
   },
 
   /* ── Player Management ── */

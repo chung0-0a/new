@@ -605,6 +605,9 @@ body {
   height: 44px;
 }
 .sun-icon { width: 24px; height: 24px; object-fit: contain; }
+/* light mode = sun, dark mode = moon — both images pre-loaded, CSS toggles visibility */
+[data-theme="light"] .icon-dark  { display: none; }
+[data-theme="dark"]  .icon-light { display: none; }
 
 /* iOS-style toggle */
 .toggle-btn {
