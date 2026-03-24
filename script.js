@@ -232,8 +232,20 @@ const App = {
       const item = document.createElement('div');
       item.className = 'result-item';
       item.innerHTML = `
-        <span class="result-name">${this._esc(name)}</span>
-        <span class="result-stats">Truth ${s.truth} · Dare ${s.dare}</span>
+        <div class="result-left">
+          <div class="result-icon"></div>
+          <span class="result-name">${this._esc(name)}</span>
+        </div>
+        <div class="result-right">
+          <div class="result-stat">
+            <div class="result-truth-icon"></div>
+            <span class="result-stat-label">Truth ${s.truth}</span>
+          </div>
+          <div class="result-stat">
+            <div class="result-dare-icon"></div>
+            <span class="result-stat-label">Dare ${s.dare}</span>
+          </div>
+        </div>
       `;
       list.appendChild(item);
     });
