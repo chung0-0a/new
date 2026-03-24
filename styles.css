@@ -141,10 +141,10 @@ body {
 [data-theme="light"] .game-subtitle { color: #ff5963; }
 [data-theme="light"] #game-player-name { color: rgba(255,89,99,0.7); }
 [data-theme="light"] #game-question { color: #ff5963; }
-[data-theme="light"] .game-card     { border-color: rgba(255,89,99,0.3); background: #fff; }
-[data-theme="light"] .card-player-row { color: rgba(255,89,99,0.65); }
+[data-theme="light"] .game-card     { border-color: #ff5963; background: #fff; }
+[data-theme="light"] .card-player-row { color: #ff5963; }
 [data-theme="light"] .card-player-icon { opacity: 0.7; }
-[data-theme="light"] .btn-home      { border-color: rgba(255,89,99,0.35); }
+[data-theme="light"] .btn-home      { border-color: #ff5963; }
 [data-theme="light"] .btn-home img  { filter: brightness(0) saturate(100%) invert(42%) sepia(87%) saturate(500%) hue-rotate(310deg); }
 [data-theme="light"] .tab.truth     { background: rgba(139,195,81,0.12); }
 [data-theme="light"] .tab.truth.active { background: #8bc351; color: #fff; }
@@ -654,14 +654,14 @@ body {
 }
 .card-q {
   background: #ff5963;
-  transform: rotate(-3deg);
-  margin-right: -6px;
+  transform: rotate(-5deg);
+  margin-right: -8px;
   z-index: 1;
 }
-.card-q span { transform: rotate(-5deg); }
+.card-q span { transform: rotate(-3deg); }
 .card-excl {
   background: #ff7359;
-  transform: rotate(3deg);
+  transform: rotate(5deg);
 }
 
 /* legacy alias */
@@ -863,8 +863,8 @@ body {
   letter-spacing: -0.5px; text-align: center;
 }
 .game-subtitle {
-  font-family: 'Pretendard', sans-serif;
-  font-size: 15px; font-weight: 500;
+  font-family: 'GmarketSans', sans-serif;
+  font-size: 16px; font-weight: 500;
   color: rgba(255,255,255,0.75);
   letter-spacing: -0.5px; text-align: center;
 }
@@ -879,14 +879,15 @@ body {
   gap: 6px; transition: background 0.2s;
 }
 .tab-icon { width: 20px; height: 20px; object-fit: contain; }
-.tab.truth { background: rgba(139,195,81,0.15); }
-.tab.truth.active { background: #6aab29; }
+.tab.truth { background: rgba(139,195,81,0.2); }
+.tab.truth.active { background: #8bc351; }
 .tab.dare { background: rgba(255,89,99,0.2); }
 .tab.dare.active { background: #ff5963; }
 
 /* ===== GAME CARD ===== */
 .game-card {
-  flex: 1; margin: 0 20px;
+  height: 215px; flex-shrink: 0;
+  margin: auto 20px;
   border: 1px solid rgba(255,255,255,0.25);
   border-radius: 10px;
   display: flex; flex-direction: column;
@@ -895,7 +896,7 @@ body {
 .card-player-row {
   display: flex; align-items: center; gap: 6px;
   color: rgba(255,255,255,0.6);
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 14px; font-weight: 300;
   letter-spacing: -0.5px; flex-shrink: 0;
 }
