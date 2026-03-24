@@ -142,6 +142,23 @@ body {
   gap: 16px;
 }
 .splash-logo { width: 120px; height: 120px; object-fit: contain; }
+.splash-loading {
+  width: 120px; height: 4px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.splash-progress {
+  height: 100%; width: 0%;
+  background: #ffffff;
+  border-radius: 2px;
+  animation: splashLoad 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes splashLoad {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
 .splash-title {
   font-family: 'GmarketSans', sans-serif;
   font-size: 65px;
@@ -614,7 +631,8 @@ body {
 /* Question / Exclamation illustration */
 .level-illus { display: flex; align-items: center; justify-content: center; }
 .illus-img { width: 160px; height: auto; object-fit: contain; }
-[data-theme="light"] .illus-dark  { display: none; }
+.illus-dark  { display: none; }
+[data-theme="dark"]  .illus-dark  { display: block; }
 [data-theme="dark"]  .illus-light { display: none; }
 
 /* legacy alias */
