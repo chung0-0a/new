@@ -21,142 +21,107 @@
     </div>
   </div>
 
-  <!-- ═══ OB1 — 게임 소개 (light) ═══ -->
-  <div id="screen-ob1" class="screen ob-screen" data-ob="0">
+  <!-- ═══ ONBOARDING (단일 화면 — 네비 고정, 중앙 슬라이드만 전환) ═══ -->
+  <div id="screen-ob" class="screen">
     <div class="screen-inner light">
+      <!-- 상단 네비: 고정 (애니메이션 없음) -->
       <div class="top-nav">
-        <div class="nav-spacer"></div>
+        <button class="btn-back" id="ob-back" onclick="App.obPrev()" style="visibility:hidden;">
+          <img src="https://www.figma.com/api/mcp/asset/7c756aab-7607-4e36-8f2c-d8b12d1f410a" alt="뒤로">
+        </button>
         <button class="btn-skip" onclick="App.go('screen-ad')">
           <img class="skip-icon" src="https://www.figma.com/api/mcp/asset/21755c25-72b2-4856-81e7-ad87819d2903" alt="">
           Skip
         </button>
       </div>
 
-      <div class="ob-body">
-        <div class="avatar-grid">
-          <div class="avatar-card" style="background:#ffe6a6;">
-            <img src="https://www.figma.com/api/mcp/asset/3abef0aa-7367-41d8-aa62-f35e0555ff40" alt="">
+      <!-- 슬라이드 뷰포트: 이 영역만 전환 애니메이션 적용 -->
+      <div class="ob-viewport">
+        <!-- Slide 0: 게임 소개 -->
+        <div class="ob-slide active" id="ob-slide-0">
+          <div class="avatar-grid">
+            <div class="avatar-card" style="background:#ffe6a6;">
+              <img src="https://www.figma.com/api/mcp/asset/3abef0aa-7367-41d8-aa62-f35e0555ff40" alt="">
+            </div>
+            <div class="avatar-card" style="background:#a9d2fe;">
+              <img src="https://www.figma.com/api/mcp/asset/4a48b17a-3619-4136-b46a-14e945f5e803" alt="">
+            </div>
+            <div class="avatar-card" style="background:#ffcca5;">
+              <img src="https://www.figma.com/api/mcp/asset/01e499b4-c27c-4a75-87fc-19902bb3656c" alt="">
+            </div>
+            <div class="avatar-card" style="background:#ffe6a6;">
+              <img src="https://www.figma.com/api/mcp/asset/c9beea9b-931c-4d03-b64d-1547023d60c8" alt="">
+            </div>
           </div>
-          <div class="avatar-card" style="background:#a9d2fe;">
-            <img src="https://www.figma.com/api/mcp/asset/4a48b17a-3619-4136-b46a-14e945f5e803" alt="">
-          </div>
-          <div class="avatar-card" style="background:#ffcca5;">
-            <img src="https://www.figma.com/api/mcp/asset/01e499b4-c27c-4a75-87fc-19902bb3656c" alt="">
-          </div>
-          <div class="avatar-card" style="background:#ffe6a6;">
-            <img src="https://www.figma.com/api/mcp/asset/c9beea9b-931c-4d03-b64d-1547023d60c8" alt="">
+          <div class="ob-text">
+            <p class="ob-title">Truth or Dare</p>
+            <p class="ob-desc">진실 혹은 행동으로 보여주는 게임<br>최대 인원 8명까지 같이 즐길 수 있습니다!</p>
           </div>
         </div>
-        <div class="ob-text">
-          <p class="ob-title">Truth or Dare</p>
-          <p class="ob-desc">진실 혹은 행동으로 보여주는 게임<br>최대 인원 8명까지 같이 즐길 수 있습니다!</p>
-        </div>
-      </div>
 
+        <!-- Slide 1: 플레이어 예시 -->
+        <div class="ob-slide" id="ob-slide-1">
+          <div class="ob2-demo">
+            <div class="ob2-input-row">
+              <div class="ob2-input-fake">Player Add</div>
+              <div class="ob2-add-btn">
+                <img src="https://www.figma.com/api/mcp/asset/4d8cbb23-3ea9-476c-95c2-2c81a3fb839a" alt="" style="position:absolute;width:28px;height:28px;">
+                <img src="https://www.figma.com/api/mcp/asset/a0d27508-a4cb-4efa-8e97-96f1cc0c64a2" alt="+" style="width:14px;height:14px;position:relative;z-index:1;">
+              </div>
+            </div>
+            <div class="ob2-player-item">
+              <span>Player1</span>
+              <div class="ob2-trash" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/b0e00563-7ecf-4c09-b07b-bf5c16514ee6');mask-image:url('https://www.figma.com/api/mcp/asset/b0e00563-7ecf-4c09-b07b-bf5c16514ee6');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#5f5f5f;width:14px;height:14px;"></div>
+            </div>
+            <div class="ob2-player-item">
+              <span>Player2</span>
+              <div class="ob2-trash" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/b0e00563-7ecf-4c09-b07b-bf5c16514ee6');mask-image:url('https://www.figma.com/api/mcp/asset/b0e00563-7ecf-4c09-b07b-bf5c16514ee6');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#5f5f5f;width:14px;height:14px;"></div>
+            </div>
+            <div class="ob2-player-item ob2-player-faded">
+              <span>Player3</span>
+              <div class="ob2-trash" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/b0e00563-7ecf-4c09-b07b-bf5c16514ee6');mask-image:url('https://www.figma.com/api/mcp/asset/b0e00563-7ecf-4c09-b07b-bf5c16514ee6');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#5f5f5f;width:14px;height:14px;"></div>
+            </div>
+          </div>
+          <div class="ob-text">
+            <p class="ob-title">Put Your Name!</p>
+            <p class="ob-desc">플러스 버튼을 누르고 참여자의 이름을<br>입력하여 플레이어를 추가하세요!</p>
+          </div>
+        </div>
+
+        <!-- Slide 2: Truth/Dare 예시 -->
+        <div class="ob-slide" id="ob-slide-2">
+          <div class="ob3-demo">
+            <div class="ob3-mode-cards">
+              <div class="ob3-card selected">
+                <div class="ob3-truth-icon"></div>
+                <span class="ob3-label selected">Truth</span>
+              </div>
+              <div class="ob3-card">
+                <img class="ob3-star-icon"
+                  src="https://www.figma.com/api/mcp/asset/1233a63b-b4bc-4e97-a2e3-476fa2d6c792" alt="dare">
+                <span class="ob3-label">Dare</span>
+              </div>
+            </div>
+            <div class="ob3-inner-dots">
+              <span class="ob3-inner-dot"></span>
+              <span class="ob3-inner-dot"></span>
+              <span class="ob3-inner-dot"></span>
+            </div>
+            <button class="ob3-start-btn" onclick="App.go('screen-ad')">Start</button>
+          </div>
+          <div class="ob-text">
+            <p class="ob-title">Select Truth or Dare</p>
+            <p class="ob-desc">Truth or Dare 중 하나를 선택 후<br>게임시작 버튼을 눌러주세요!</p>
+          </div>
+        </div>
+      </div><!-- /ob-viewport -->
+
+      <!-- 하단 바: 고정 (애니메이션 없음) -->
       <div class="bottom-bar">
-        <div class="page-dots">
+        <div class="page-dots" id="ob-dots">
           <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
         </div>
-        <button class="btn-primary" onclick="App.obGo(1,'left')">다음</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ OB2 — 플레이어 예시 (light) ═══ -->
-  <div id="screen-ob2" class="screen ob-screen" data-ob="1">
-    <div class="screen-inner light">
-      <div class="top-nav">
-        <button class="btn-back" onclick="App.obGo(0,'right')">
-          <img src="https://www.figma.com/api/mcp/asset/7c756aab-7607-4e36-8f2c-d8b12d1f410a" alt="뒤로">
-        </button>
-        <button class="btn-skip" onclick="App.go('screen-ad')">
-          <img class="skip-icon" src="https://www.figma.com/api/mcp/asset/21755c25-72b2-4856-81e7-ad87819d2903" alt="">
-          Skip
-        </button>
-      </div>
-
-      <div class="ob-body">
-        <!-- Static demo -->
-        <div class="ob2-demo">
-          <div class="ob2-input-row">
-            <div class="ob2-input-fake">Player Add</div>
-            <div class="ob2-add-btn">
-              <img src="https://www.figma.com/api/mcp/asset/4d8cbb23-3ea9-476c-95c2-2c81a3fb839a" alt="" style="position:absolute;width:28px;height:28px;">
-              <img src="https://www.figma.com/api/mcp/asset/a0d27508-a4cb-4efa-8e97-96f1cc0c64a2" alt="+" style="width:14px;height:14px;position:relative;z-index:1;">
-            </div>
-          </div>
-          <div class="ob2-player-item">
-            <span>Player1</span>
-            <div class="ob2-trash" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/b0e00563-7ecf-4c09-b07b-bf5c16514ee6');mask-image:url('https://www.figma.com/api/mcp/asset/b0e00563-7ecf-4c09-b07b-bf5c16514ee6');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#5f5f5f;width:14px;height:14px;"></div>
-          </div>
-          <div class="ob2-player-item">
-            <span>Player2</span>
-            <div class="ob2-trash" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/b0e00563-7ecf-4c09-b07b-bf5c16514ee6');mask-image:url('https://www.figma.com/api/mcp/asset/b0e00563-7ecf-4c09-b07b-bf5c16514ee6');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#5f5f5f;width:14px;height:14px;"></div>
-          </div>
-          <div class="ob2-player-item ob2-player-faded">
-            <span>Player3</span>
-            <div class="ob2-trash" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/b0e00563-7ecf-4c09-b07b-bf5c16514ee6');mask-image:url('https://www.figma.com/api/mcp/asset/b0e00563-7ecf-4c09-b07b-bf5c16514ee6');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#5f5f5f;width:14px;height:14px;"></div>
-          </div>
-        </div>
-        <div class="ob-text">
-          <p class="ob-title">Put Your Name!</p>
-          <p class="ob-desc">플러스 버튼을 누르고 참여자의 이름을<br>입력하여 플레이어를 추가하세요!</p>
-        </div>
-      </div>
-
-      <div class="bottom-bar">
-        <div class="page-dots">
-          <span class="dot"></span><span class="dot active"></span><span class="dot"></span>
-        </div>
-        <button class="btn-primary" onclick="App.obGo(2,'left')">다음</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ OB3 — Truth/Dare 예시 (light) ═══ -->
-  <div id="screen-ob3" class="screen ob-screen" data-ob="2">
-    <div class="screen-inner light">
-      <div class="top-nav">
-        <button class="btn-back" onclick="App.obGo(1,'right')">
-          <img src="https://www.figma.com/api/mcp/asset/7c756aab-7607-4e36-8f2c-d8b12d1f410a" alt="뒤로">
-        </button>
-        <button class="btn-skip" onclick="App.go('screen-ad')">
-          <img class="skip-icon" src="https://www.figma.com/api/mcp/asset/21755c25-72b2-4856-81e7-ad87819d2903" alt="">
-          Skip
-        </button>
-      </div>
-
-      <div class="ob-body">
-        <div class="ob3-demo">
-          <div class="ob3-mode-cards">
-            <div class="ob3-card selected">
-              <div class="ob3-truth-icon"></div>
-              <span class="ob3-label selected">Truth</span>
-            </div>
-            <div class="ob3-card">
-              <img class="ob3-star-icon"
-                src="https://www.figma.com/api/mcp/asset/1233a63b-b4bc-4e97-a2e3-476fa2d6c792" alt="dare">
-              <span class="ob3-label">Dare</span>
-            </div>
-          </div>
-          <div class="ob3-inner-dots">
-            <span class="ob3-inner-dot"></span>
-            <span class="ob3-inner-dot"></span>
-            <span class="ob3-inner-dot"></span>
-          </div>
-          <button class="ob3-start-btn" onclick="App.go('screen-ad')">Start</button>
-        </div>
-        <div class="ob-text">
-          <p class="ob-title">Select Truth or Dare</p>
-          <p class="ob-desc">Truth or Dare 중 하나를 선택 후<br>게임시작 버튼을 눌러주세요!</p>
-        </div>
-      </div>
-
-      <div class="bottom-bar">
-        <div class="page-dots">
-          <span class="dot"></span><span class="dot"></span><span class="dot active"></span>
-        </div>
-        <button class="btn-primary" onclick="App.go('screen-ad')">시작하기</button>
+        <button id="ob-next-btn" class="btn-primary" onclick="App.obNext()">다음</button>
       </div>
     </div>
   </div>
@@ -270,10 +235,12 @@
 
       <!-- 중앙 콘텐츠 (flex:1 + justify-content:center) -->
       <div class="level-center">
-        <!-- 물음표 카드 일러스트 -->
+        <!-- 물음표/느낌표 카드 일러스트 -->
         <div class="level-illus">
-          <img src="https://www.figma.com/api/mcp/asset/f456a188-5082-4cf6-be89-bd9b7315d1ee" alt="?!" class="illus-img illus-light">
-          <img src="https://www.figma.com/api/mcp/asset/83be3898-0758-4706-8ec7-f88133cdb3fe" alt="?!" class="illus-img illus-dark">
+          <div class="illus-cards">
+            <div class="illus-card illus-q">?</div>
+            <div class="illus-card illus-ex">!</div>
+          </div>
         </div>
 
         <div class="level-header">
@@ -385,27 +352,29 @@
         </button>
       </div>
 
-      <div class="game-header">
-        <p class="game-title">TRUTH OR DARE?</p>
-        <p class="game-subtitle">선택 후 시작 버튼을 눌러주세요!</p>
-        <div class="game-tabs">
-          <button id="tab-truth" class="tab truth" onclick="App.setMode('truth')">
-            <div class="tab-icon truth-icon"></div>
-            Truth
-          </button>
-          <button id="tab-dare" class="tab dare active" onclick="App.setMode('dare')">
-            <div class="tab-icon dare-icon"></div>
-            Dare
-          </button>
+      <div class="game-content">
+        <div class="game-header">
+          <p class="game-title">TRUTH OR DARE?</p>
+          <p class="game-subtitle">선택 후 시작 버튼을 눌러주세요!</p>
+          <div class="game-tabs">
+            <button id="tab-truth" class="tab truth" onclick="App.setMode('truth')">
+              <div class="tab-icon truth-icon"></div>
+              Truth
+            </button>
+            <button id="tab-dare" class="tab dare active" onclick="App.setMode('dare')">
+              <div class="tab-icon dare-icon"></div>
+              Dare
+            </button>
+          </div>
         </div>
-      </div>
 
-      <div class="game-card">
-        <div class="card-player-row">
-          <img class="card-player-icon" src="https://www.figma.com/api/mcp/asset/8e6c27bd-56d2-4bdb-a5a1-e3bfba0df864" alt="">
-          <span id="game-player-name">플레이어</span>
+        <div class="game-card">
+          <div class="card-player-row">
+            <div class="card-player-icon"></div>
+            <span id="game-player-name">플레이어</span>
+          </div>
+          <p id="game-question">시작 버튼을 눌러주세요!</p>
         </div>
-        <p id="game-question">시작 버튼을 눌러주세요!</p>
       </div>
 
       <div class="game-footer">

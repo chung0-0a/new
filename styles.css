@@ -91,10 +91,11 @@ body {
   from { opacity: 1; transform: translateX(0); }
   to   { opacity: 0; transform: translateX(60px); }
 }
-.ob-anim-in-right  { animation: obSlideInRight  0.35s cubic-bezier(0.25,0.1,0.25,1) forwards; }
-.ob-anim-in-left   { animation: obSlideInLeft   0.35s cubic-bezier(0.25,0.1,0.25,1) forwards; }
-.ob-anim-out-left  { animation: obSlideOutLeft  0.35s cubic-bezier(0.25,0.1,0.25,1) forwards; }
-.ob-anim-out-right { animation: obSlideOutRight 0.35s cubic-bezier(0.25,0.1,0.25,1) forwards; }
+/* 슬라이드에 적용되는 전환 애니메이션 */
+.ob-slide.ob-anim-in-right  { display: flex; animation: obSlideInRight  0.35s cubic-bezier(0.25,0.1,0.25,1) forwards; }
+.ob-slide.ob-anim-in-left   { display: flex; animation: obSlideInLeft   0.35s cubic-bezier(0.25,0.1,0.25,1) forwards; }
+.ob-slide.ob-anim-out-left  { display: flex; animation: obSlideOutLeft  0.35s cubic-bezier(0.25,0.1,0.25,1) forwards; }
+.ob-slide.ob-anim-out-right { display: flex; animation: obSlideOutRight 0.35s cubic-bezier(0.25,0.1,0.25,1) forwards; }
 
 .screen-inner {
   width: 100%;
@@ -106,8 +107,13 @@ body {
 .screen-inner.white { background: #ffffff; }
 .screen-inner.dark  { background: #1a1a1a; }
 
-/* game inner: space-between으로 nav/header/card/footer 균등 배치 */
-#game-inner { justify-content: space-between; }
+/* game inner: nav/content/footer 구조 — game-content가 flex:1로 중앙 정렬 */
+.game-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 /* ── Light mode: game screen ── */
 [data-theme="light"] #game-inner    { background: #ffffff; }
@@ -117,7 +123,7 @@ body {
 [data-theme="light"] #game-question { color: #ff5963; }
 [data-theme="light"] .game-card     { border-color: #ff5963; background: #fff; }
 [data-theme="light"] .card-player-row { color: #ff5963; }
-[data-theme="light"] .card-player-icon { opacity: 0.7; }
+[data-theme="light"] .card-player-icon { background: #ff5963; }
 [data-theme="light"] .btn-home      { border-color: #ff5963; }
 [data-theme="light"] .btn-home img  { filter: brightness(0) saturate(100%) invert(42%) sepia(87%) saturate(500%) hue-rotate(310deg); }
 /* 라이트모드 뒤로가기: 흰 아이콘 → 빨간 아이콘 */
@@ -252,16 +258,24 @@ body {
 /* Skip button on dark backgrounds */
 .screen-inner.dark .btn-skip { color: rgba(255,255,255,0.65); }
 
-/* ===== ONBOARDING BODY ===== */
-.ob-body {
+/* ===== ONBOARDING VIEWPORT (슬라이드 영역) ===== */
+.ob-viewport {
   flex: 1;
-  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+.ob-slide {
+  position: absolute;
+  inset: 0;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 40px;
   padding: 16px 20px;
-  overflow: hidden;
+}
+.ob-slide.active {
+  display: flex;
 }
 
 /* ===== AVATAR GRID (OB1) ===== */
@@ -640,12 +654,33 @@ body {
   overflow: hidden;
 }
 
-/* Question / Exclamation illustration — Figma assets (112×74px native) */
-.level-illus { display: flex; align-items: center; justify-content: center; }
-.illus-img   { width: 150px; height: auto; object-fit: contain; }
-.illus-dark  { display: none; }
-[data-theme="dark"] .illus-dark  { display: block; }
-[data-theme="dark"] .illus-light { display: none; }
+/* ?! 카드 일러스트 */
+.level-illus { display: flex; align-items: center; justify-content: center; height: 90px; }
+.illus-cards {
+  position: relative;
+  width: 160px; height: 90px;
+}
+.illus-card {
+  position: absolute;
+  width: 68px; height: 80px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'GmarketSans', sans-serif;
+  font-size: 40px; font-weight: 700;
+  color: white;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+}
+.illus-q {
+  background: #ff5963;
+  transform: rotate(-10deg);
+  left: 14px; bottom: 0;
+  z-index: 1;
+}
+.illus-ex {
+  background: #ffb3b6;
+  transform: rotate(6deg);
+  right: 14px; bottom: 0;
+}
 
 /* legacy alias */
 .level-card-q {
@@ -900,7 +935,15 @@ body {
   font-size: 14px; font-weight: 300;
   letter-spacing: -0.5px; flex-shrink: 0;
 }
-.card-player-icon { width: 15px; height: 15px; object-fit: contain; opacity: 0.6; }
+.card-player-icon {
+  width: 15px; height: 15px; flex-shrink: 0;
+  background: rgba(255,255,255,0.6);
+  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/8e6c27bd-56d2-4bdb-a5a1-e3bfba0df864');
+  mask-image: url('https://www.figma.com/api/mcp/asset/8e6c27bd-56d2-4bdb-a5a1-e3bfba0df864');
+  -webkit-mask-size: contain; mask-size: contain;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center; mask-position: center;
+}
 
 #game-question {
   flex: 1; display: flex;
