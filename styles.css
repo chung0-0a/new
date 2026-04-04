@@ -160,14 +160,10 @@ body {
   gap: 16px;
 }
 .splash-logo {
-  width: 80px; height: 80px;
-  background: #ff5963;
-  border-radius: 14px;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'GmarketSans', sans-serif;
-  font-size: 36px; font-weight: 700;
-  color: white;
-  letter-spacing: 2px;
+  width: 112px;
+  height: 74px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 .splash-loading {
   width: 120px; height: 4px;
@@ -363,17 +359,17 @@ body {
 }
 .btn-primary:active { opacity: 0.85; }
 
-/* ===== ONBOARDING 2 — DEMO (dark bg) ===== */
+/* ===== ONBOARDING 2 — DEMO ===== */
 .ob2-demo {
-  width: 280px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  width: 269px;
+  height: 213px;
+  position: relative;
+  flex-shrink: 0;
 }
-.ob2-input-row { display: flex; gap: 5px; margin-bottom: 2px; }
 .ob2-input-fake {
-  flex: 1;
-  height: 54px;
+  position: absolute;
+  left: 0; top: 0;
+  width: 210px; height: 54px;
   background: #ffffff;
   border-radius: 10px;
   padding: 0 18px;
@@ -385,17 +381,30 @@ body {
   align-items: center;
 }
 .ob2-add-btn {
+  position: absolute;
+  left: 215px; top: 0;
   width: 54px; height: 54px;
   background: #ff5963;
   border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-  position: relative;
 }
-.ob2-add-btn img { width: 24px; height: 24px; object-fit: contain; }
+/* Ellipse4 (white circle) and Union (+) are children of ob2-add-btn */
+.ob2-ellipse {
+  position: absolute;
+  left: 13px; top: 13px;
+  width: 28px; height: 28px;
+  object-fit: contain;
+}
+.ob2-union {
+  position: absolute;
+  left: 20px; top: 20px;
+  width: 14px; height: 14px;
+  object-fit: contain;
+  z-index: 1;
+}
 
 .ob2-player-item {
-  height: 48px;
+  position: absolute;
+  left: 0; width: 269px; height: 48px;
   background: #ffffff;
   border-radius: 10px;
   display: flex;
@@ -403,31 +412,62 @@ body {
   justify-content: space-between;
   padding: 0 18px;
   font-family: 'GmarketSans', sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   color: #5f5f5f;
 }
-.ob2-player-item img { width: 18px; height: 18px; object-fit: contain; opacity: 0.5; }
 .ob2-player-faded { opacity: 0.35; }
 
-/* ===== ONBOARDING 3 — MODE DEMO (dark bg) ===== */
-.ob3-demo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.ob2-trash {
+  width: 14px; height: 14px;
+  background: #5f5f5f;
+  -webkit-mask-size: contain; mask-size: contain;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center; mask-position: center;
+  flex-shrink: 0;
 }
-.ob3-mode-cards { display: flex; gap: 5px; }
-.ob3-card {
+
+.ob2-fade {
+  position: absolute;
+  left: 0; top: 143px;
+  width: 269px; height: 70px;
+  background: linear-gradient(to bottom, rgba(249,249,249,0), #f9f9f9);
+  pointer-events: none;
+}
+
+/* ===== ONBOARDING 3 — MODE DEMO ===== */
+.ob3-demo {
+  position: relative;
+  width: 265px;
+  height: 240px;
+  flex-shrink: 0;
+}
+/* Truth card: left, selected (red border) */
+.ob3-card-truth {
+  position: absolute;
+  left: 0; top: 0;
   width: 130px; height: 130px;
   background: #ffffff;
   border-radius: 10px;
+  border: 2.5px solid #ff5963;
+  box-shadow: 0 1px 21.5px rgba(0,0,0,0.05);
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   gap: 10px;
+}
+/* Dare card: right */
+.ob3-card-dare {
+  position: absolute;
+  left: 135px; top: 0;
+  width: 130px; height: 130px;
+  background: #ffffff;
+  border-radius: 10px;
   border: 2.5px solid transparent;
   box-shadow: 0 1px 21.5px rgba(0,0,0,0.05);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 10px;
 }
-.ob3-card.selected { border-color: #ff5963; }
 .ob3-truth-icon {
   width: 41px; height: 41px;
   background: #ff5963;
@@ -438,25 +478,32 @@ body {
   -webkit-mask-position: center; mask-position: center;
 }
 .ob3-star-icon { width: 43px; height: 43px; object-fit: contain; }
-.ob3-label {
+.ob3-label-truth {
   font-family: 'GmarketSans', sans-serif;
-  font-size: 17px;
-  font-weight: 700;
+  font-size: 17px; font-weight: 700;
   letter-spacing: -0.5px;
-  color: #c0c0c0;
+  color: #ff5963;
 }
-.ob3-label.selected { color: #ff5963; }
-.ob3-inner-dots {
-  display: flex;
-  gap: 8px;
-  margin-top: 25px;
+.ob3-label-dare {
+  font-family: 'GmarketSans', sans-serif;
+  font-size: 17px; font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #9d9d9d;
 }
+/* inner dots at top:155, left:123/131/139 */
 .ob3-inner-dot {
+  position: absolute;
+  top: 155px;
   width: 4px; height: 4px;
-  border-radius: 50%;
-  background: #c8c8c8;
+  object-fit: contain;
 }
+.ob3-dot-1 { left: 123px; }
+.ob3-dot-2 { left: 131px; }
+.ob3-dot-3 { left: 139px; }
+/* Start button at top:184 */
 .ob3-start-btn {
+  position: absolute;
+  left: 0; top: 184px;
   width: 265px; height: 56px;
   background: #ff5963;
   border: none;
@@ -467,7 +514,16 @@ body {
   font-weight: 700;
   cursor: pointer;
   letter-spacing: -0.32px;
-  margin-top: 25px;
+}
+/* 👆🏻 finger pointing emoji — overlaps bottom-right of dare card */
+.ob3-finger {
+  position: absolute;
+  left: 195px;
+  top: 70px;
+  font-size: 42px;
+  transform: rotate(-30deg);
+  line-height: 1;
+  pointer-events: none;
 }
 
 /* ===== AD / PREMIUM SCREEN ===== */
@@ -1153,8 +1209,8 @@ body {
 [data-theme="dark"] .ob-title { color: white; }
 
 /* OB3: mode demo cards */
-[data-theme="dark"] .ob3-card { background: #2a2a2a; border-color: #3a3a3a; }
-[data-theme="dark"] .ob3-card.selected { border-color: #ff5963; }
+[data-theme="dark"] .ob3-card-truth { background: #2a2a2a; }
+[data-theme="dark"] .ob3-card-dare  { background: #2a2a2a; }
 [data-theme="dark"] .ob3-label { color: #888; }
 [data-theme="dark"] .ob3-label.selected { color: #ff5963; }
 [data-theme="dark"] .ob3-star-icon { filter: brightness(0) invert(0.5); }

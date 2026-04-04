@@ -12,7 +12,7 @@
   <!-- ═══ SPLASH ═══ -->
   <div id="screen-splash" class="screen active">
     <div class="splash">
-      <div class="splash-logo">?!</div>
+      <img class="splash-logo" src="https://www.figma.com/api/mcp/asset/77529498-4c78-4d48-a9a9-8820e7648374" alt="">
       <div class="splash-title"><p>TRUTH</p><p>OR</p><p>DARE</p></div>
       <div class="splash-loading">
         <div class="splash-progress"></div>
@@ -26,12 +26,9 @@
       <!-- 상단 네비: 고정 (애니메이션 없음) -->
       <div class="top-nav">
         <button class="btn-back" id="ob-back" onclick="App.obPrev()" style="visibility:hidden;">
-          <img src="https://www.figma.com/api/mcp/asset/a189e0b9-563e-49a3-b5dc-c2c22d1a1aa9" alt="뒤로">
+          <img src="https://www.figma.com/api/mcp/asset/80eacb71-c490-45ea-b32c-3ddbf62a9988" alt="뒤로">
         </button>
-        <button class="btn-skip" onclick="App.go('screen-ad')">
-          <img class="skip-icon" src="https://www.figma.com/api/mcp/asset/cde20ff6-2842-4b12-b8fe-7460b7ce95ea" alt="">
-          Skip
-        </button>
+        <button class="btn-skip" onclick="App.go('screen-ad')">Skip</button>
       </div>
 
       <!-- 슬라이드 뷰포트: 이 영역만 전환 애니메이션 적용 -->
@@ -40,16 +37,16 @@
         <div class="ob-slide active" id="ob-slide-0">
           <div class="avatar-grid">
             <div class="avatar-card" style="background:#ffe6a6;">
-              <img src="https://www.figma.com/api/mcp/asset/7aef57f8-3640-4738-b81d-ba9609a7ddea" alt="">
+              <img src="https://www.figma.com/api/mcp/asset/2d71d255-4df9-456b-967c-445cc667ba01" alt="">
             </div>
             <div class="avatar-card" style="background:#a9d2fe;">
-              <img src="https://www.figma.com/api/mcp/asset/42798b6b-1a6a-47b9-8cd2-3d9b40cc8197" alt="">
+              <img src="https://www.figma.com/api/mcp/asset/56563dfd-910a-46e4-83e0-7107a7abb764" alt="">
             </div>
             <div class="avatar-card" style="background:#ffcca5;">
-              <img src="https://www.figma.com/api/mcp/asset/46afccbf-d9d0-498a-b20d-c45d0152ce48" alt="">
+              <img src="https://www.figma.com/api/mcp/asset/a1d74f08-0f8f-430e-b595-92de141b6692" alt="">
             </div>
             <div class="avatar-card" style="background:#ffe6a6;">
-              <img src="https://www.figma.com/api/mcp/asset/45b3aead-4195-4b09-a456-8646fd688bc1" alt="">
+              <img src="https://www.figma.com/api/mcp/asset/b8cce5ad-f4bc-41e6-8b41-a621aa47d727" alt="">
             </div>
           </div>
           <div class="ob-text">
@@ -61,25 +58,25 @@
         <!-- Slide 1: 플레이어 예시 -->
         <div class="ob-slide" id="ob-slide-1">
           <div class="ob2-demo">
-            <div class="ob2-input-row">
-              <div class="ob2-input-fake">Player Add</div>
-              <div class="ob2-add-btn">
-                <img src="https://www.figma.com/api/mcp/asset/9db2d58d-7fe9-4c45-bbff-1a0e2ac3bf7c" alt="" style="position:absolute;width:28px;height:28px;">
-                <img src="https://www.figma.com/api/mcp/asset/66929f2e-45cb-42f1-b096-d9d04a4d183d" alt="+" style="width:14px;height:14px;position:relative;z-index:1;">
-              </div>
+            <!-- absolute grid: 269px wide -->
+            <div class="ob2-input-fake">Player Add</div>
+            <div class="ob2-add-btn">
+              <img src="https://www.figma.com/api/mcp/asset/7fe615bd-5bd6-4187-90d2-5a6effddcb1b" alt="" class="ob2-ellipse">
+              <img src="https://www.figma.com/api/mcp/asset/908789bc-1f12-4ec4-b26a-1f9a06cb9d9d" alt="+" class="ob2-union">
             </div>
-            <div class="ob2-player-item">
+            <div class="ob2-player-item" style="top:59px;">
               <span>Player1</span>
-              <div class="ob2-trash" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/695d49ee-b02b-4fed-a783-78877500b514');mask-image:url('https://www.figma.com/api/mcp/asset/695d49ee-b02b-4fed-a783-78877500b514');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#5f5f5f;width:14px;height:14px;"></div>
+              <div class="ob2-trash" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/f2dfff80-9981-41ee-b3f7-abcd45da9f53');mask-image:url('https://www.figma.com/api/mcp/asset/f2dfff80-9981-41ee-b3f7-abcd45da9f53');"></div>
             </div>
-            <div class="ob2-player-item">
+            <div class="ob2-player-item" style="top:112px;">
               <span>Player2</span>
-              <div class="ob2-trash" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/695d49ee-b02b-4fed-a783-78877500b514');mask-image:url('https://www.figma.com/api/mcp/asset/695d49ee-b02b-4fed-a783-78877500b514');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#5f5f5f;width:14px;height:14px;"></div>
+              <div class="ob2-trash" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/f2dfff80-9981-41ee-b3f7-abcd45da9f53');mask-image:url('https://www.figma.com/api/mcp/asset/f2dfff80-9981-41ee-b3f7-abcd45da9f53');"></div>
             </div>
-            <div class="ob2-player-item ob2-player-faded">
+            <div class="ob2-player-item ob2-player-faded" style="top:165px;">
               <span>Player3</span>
-              <div class="ob2-trash" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/695d49ee-b02b-4fed-a783-78877500b514');mask-image:url('https://www.figma.com/api/mcp/asset/695d49ee-b02b-4fed-a783-78877500b514');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;background:#5f5f5f;width:14px;height:14px;"></div>
+              <div class="ob2-trash" style="-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/f2dfff80-9981-41ee-b3f7-abcd45da9f53');mask-image:url('https://www.figma.com/api/mcp/asset/f2dfff80-9981-41ee-b3f7-abcd45da9f53');"></div>
             </div>
+            <div class="ob2-fade"></div>
           </div>
           <div class="ob-text">
             <p class="ob-title">Put Your Name!</p>
@@ -90,23 +87,23 @@
         <!-- Slide 2: Truth/Dare 예시 -->
         <div class="ob-slide" id="ob-slide-2">
           <div class="ob3-demo">
-            <div class="ob3-mode-cards">
-              <div class="ob3-card selected">
-                <div class="ob3-truth-icon"></div>
-                <span class="ob3-label selected">Truth</span>
-              </div>
-              <div class="ob3-card">
-                <img class="ob3-star-icon"
-                  src="https://www.figma.com/api/mcp/asset/02f36a8a-e223-46cb-a360-2bf4dbde5a3b" alt="dare">
-                <span class="ob3-label">Dare</span>
-              </div>
+            <!-- absolute grid: 265px wide, 240px tall -->
+            <div class="ob3-card ob3-card-truth">
+              <div class="ob3-truth-icon"></div>
+              <span class="ob3-label ob3-label-truth">Truth</span>
             </div>
-            <div class="ob3-inner-dots">
-              <span class="ob3-inner-dot"></span>
-              <span class="ob3-inner-dot"></span>
-              <span class="ob3-inner-dot"></span>
+            <div class="ob3-card ob3-card-dare">
+              <img class="ob3-star-icon" src="https://www.figma.com/api/mcp/asset/f4965e39-ea3b-4632-9e6b-263bdb09bafc" alt="dare">
+              <span class="ob3-label ob3-label-dare">Dare</span>
             </div>
+            <!-- inner dots at top:155 -->
+            <img class="ob3-inner-dot ob3-dot-1" src="https://www.figma.com/api/mcp/asset/437dbba7-fd9f-445a-a855-49a4ea26fd06" alt="">
+            <img class="ob3-inner-dot ob3-dot-2" src="https://www.figma.com/api/mcp/asset/437dbba7-fd9f-445a-a855-49a4ea26fd06" alt="">
+            <img class="ob3-inner-dot ob3-dot-3" src="https://www.figma.com/api/mcp/asset/437dbba7-fd9f-445a-a855-49a4ea26fd06" alt="">
+            <!-- start button at top:184 -->
             <button class="ob3-start-btn" onclick="App.go('screen-ad')">Start</button>
+            <!-- pointing finger emoji -->
+            <span class="ob3-finger">👆🏻</span>
           </div>
           <div class="ob-text">
             <p class="ob-title">Select Truth or Dare</p>
@@ -130,20 +127,22 @@
     <div class="screen-inner white">
       <div class="top-nav">
         <button class="btn-back" onclick="App.go('screen-level')">
-          <img src="https://www.figma.com/api/mcp/asset/a189e0b9-563e-49a3-b5dc-c2c22d1a1aa9" alt="뒤로">
+          <img src="https://www.figma.com/api/mcp/asset/b24bbca7-f5ca-4067-934f-81e657208939" alt="뒤로">
         </button>
         <p class="nav-title">프리미엄 구독</p>
-        <button class="btn-close" onclick="App.go('screen-level')">✕</button>
+        <button class="btn-close" onclick="App.go('screen-level')">
+          <img src="https://www.figma.com/api/mcp/asset/6557fe0c-20b5-4e1f-8329-728ca824928d" alt="닫기" style="width:32px;height:32px;object-fit:contain;">
+        </button>
       </div>
 
       <div class="ad-scroll">
         <div class="ad-illustration">
-          <!-- 빛나는 점들 -->
-          <div class="ad-sparkle-dot" style="top:0;left:57px;background:#ff59c8;width:13px;height:13px;"></div>
-          <div class="ad-sparkle-dot" style="top:7px;left:173px;background:#8bc351;width:16px;height:16px;"></div>
-          <div class="ad-sparkle-dot" style="top:18px;left:186px;background:#ff7359;width:13px;height:13px;"></div>
-          <div class="ad-sparkle-dot" style="top:43px;left:0;background:#8bc351;width:13px;height:13px;"></div>
-          <div class="ad-sparkle-dot" style="bottom:48px;right:0;background:#ddd;width:13px;height:13px;"></div>
+          <!-- 빛나는 별 점들 (4-point star shape) -->
+          <div class="ad-sparkle-dot" style="top:0;left:57px;background:#ff59c8;width:13px;height:13px;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/9d3a4134-96c8-4cfb-8743-a8ed6a6ec94a');mask-image:url('https://www.figma.com/api/mcp/asset/9d3a4134-96c8-4cfb-8743-a8ed6a6ec94a');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;border-radius:0;"></div>
+          <div class="ad-sparkle-dot" style="top:7px;left:173px;background:#8bc351;width:16px;height:16px;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/21cd751c-997b-4766-a7b3-c24cdead33f3');mask-image:url('https://www.figma.com/api/mcp/asset/21cd751c-997b-4766-a7b3-c24cdead33f3');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;border-radius:0;"></div>
+          <div class="ad-sparkle-dot" style="top:18px;left:186px;background:#ff7359;width:13px;height:13px;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/9d3a4134-96c8-4cfb-8743-a8ed6a6ec94a');mask-image:url('https://www.figma.com/api/mcp/asset/9d3a4134-96c8-4cfb-8743-a8ed6a6ec94a');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;border-radius:0;"></div>
+          <div class="ad-sparkle-dot" style="top:43px;left:0;background:#8bc351;width:13px;height:13px;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/9d3a4134-96c8-4cfb-8743-a8ed6a6ec94a');mask-image:url('https://www.figma.com/api/mcp/asset/9d3a4134-96c8-4cfb-8743-a8ed6a6ec94a');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;border-radius:0;"></div>
+          <div class="ad-sparkle-dot" style="bottom:48px;right:0;background:#ddd;width:13px;height:13px;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/9d3a4134-96c8-4cfb-8743-a8ed6a6ec94a');mask-image:url('https://www.figma.com/api/mcp/asset/9d3a4134-96c8-4cfb-8743-a8ed6a6ec94a');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;border-radius:0;"></div>
           <!-- 왼쪽: 초록 카드 (게임컨트롤러) -->
           <div class="ad-card ad-card-green">
             <svg width="34" height="26" viewBox="0 0 34 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -164,7 +163,7 @@
           </div>
           <!-- 오른쪽: 핑크 카드 (불꽃 아이콘) -->
           <div class="ad-card ad-card-pink">
-            <div style="width:37px;height:37px;background:white;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/813f1399-343a-476f-a1c7-88d9057ea443');mask-image:url('https://www.figma.com/api/mcp/asset/813f1399-343a-476f-a1c7-88d9057ea443');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
+            <div style="width:37px;height:37px;background:white;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/dece2dd5-8737-4a9b-a82b-cd33e306f299');mask-image:url('https://www.figma.com/api/mcp/asset/dece2dd5-8737-4a9b-a82b-cd33e306f299');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
           </div>
         </div>
         <div class="ad-title-row">
@@ -187,23 +186,23 @@
         <div class="ad-benefits">
           <div class="ad-benefit-card" style="background:#ff7359;">
             <div class="benefit-icon-area">
-              <div style="width:68px;height:68px;background:white;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/980d2380-91b6-4fd6-a57c-e495d931e971');mask-image:url('https://www.figma.com/api/mcp/asset/980d2380-91b6-4fd6-a57c-e495d931e971');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
+              <div style="width:68px;height:68px;background:white;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/d6d7a262-61f4-44d0-85b4-3ff0c935cbee');mask-image:url('https://www.figma.com/api/mcp/asset/d6d7a262-61f4-44d0-85b4-3ff0c935cbee');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
             </div>
             <div class="benefit-info" style="background:linear-gradient(to right,#eb664d,#ff7359);">
               <div style="display:flex;align-items:center;justify-content:space-between;width:100%;">
                 <div><p class="benefit-name">광고 제거</p><p class="benefit-desc">앱 전체 광고 제거</p></div>
-                <div style="width:13px;height:13px;background:white;flex-shrink:0;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/a28482cf-5d2e-4017-977c-9b6e32e7cca4');mask-image:url('https://www.figma.com/api/mcp/asset/a28482cf-5d2e-4017-977c-9b6e32e7cca4');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
+                <div style="width:13px;height:13px;background:white;flex-shrink:0;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/034f36f2-2d7f-4b80-8518-8fe5c02effd6');mask-image:url('https://www.figma.com/api/mcp/asset/034f36f2-2d7f-4b80-8518-8fe5c02effd6');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
               </div>
             </div>
           </div>
           <div class="ad-benefit-card" style="background:#ff59c8;">
             <div class="benefit-icon-area">
-              <div style="width:60px;height:60px;background:white;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/813f1399-343a-476f-a1c7-88d9057ea443');mask-image:url('https://www.figma.com/api/mcp/asset/813f1399-343a-476f-a1c7-88d9057ea443');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
+              <div style="width:60px;height:60px;background:white;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/dece2dd5-8737-4a9b-a82b-cd33e306f299');mask-image:url('https://www.figma.com/api/mcp/asset/dece2dd5-8737-4a9b-a82b-cd33e306f299');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
             </div>
             <div class="benefit-info" style="background:linear-gradient(to right,#eb49b6,#ff59c8);">
               <div style="display:flex;align-items:center;justify-content:space-between;width:100%;">
                 <div><p class="benefit-name">HARD 모드 해제</p><p class="benefit-desc">360개의 모드 해제</p></div>
-                <div style="width:13px;height:13px;background:white;flex-shrink:0;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/a28482cf-5d2e-4017-977c-9b6e32e7cca4');mask-image:url('https://www.figma.com/api/mcp/asset/a28482cf-5d2e-4017-977c-9b6e32e7cca4');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
+                <div style="width:13px;height:13px;background:white;flex-shrink:0;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/034f36f2-2d7f-4b80-8518-8fe5c02effd6');mask-image:url('https://www.figma.com/api/mcp/asset/034f36f2-2d7f-4b80-8518-8fe5c02effd6');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
               </div>
             </div>
           </div>
