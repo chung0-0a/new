@@ -478,31 +478,35 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 0 20px 34px;
-  gap: 16px;
+  gap: 0;
 }
+.ad-illustration { margin-bottom: 40px; }
+.ad-title-row    { margin-bottom: 8px; }
+.ad-sub          { margin-bottom: 0; }
+.ad-update       { margin-bottom: 16px; }
+.ad-plans        { margin-bottom: 16px; }
+.ad-benefits-title { margin-bottom: 12px; }
+.ad-benefits     { margin-bottom: 16px; }
 
 .ad-illustration {
-  display: flex;
-  gap: 6px;
-  align-items: flex-end;
   position: relative;
-  height: 110px;
-  justify-content: center;
+  width: 249px;
+  height: 122px;
+  flex-shrink: 0;
 }
-.ad-block {
+/* 절대 위치로 카드 배치 — Figma 기준 */
+.ad-card {
+  position: absolute;
   border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
-  flex-direction: column;
 }
-.ad-block-green  { background: #8bc351; width: 75px; height: 83px; }
-.ad-block-orange { background: #ff7359; width: 81px; height: 99px; }
-.ad-block-pink   { background: #ff59c8; width: 75px; height: 83px; }
-.ad-block-emoji  { font-size: 32px; }
+.ad-card-green  { background: #8bc351; width: 75px; height: 83px; left: 27px;  top: 39px; }
+.ad-card-orange { background: #ff7359; width: 81px; height: 99px; left: 86px;  top: 23px; z-index: 1; }
+.ad-card-pink   { background: #ff59c8; width: 75px; height: 83px; left: 151px; top: 39px; }
 .ad-block-text   {
   font-family: 'GmarketSans', sans-serif;
   font-size: 28px; font-weight: 700; color: white;
 }
-.ad-block-tall { margin-bottom: 0; }
 .ad-sparkle { position: absolute; font-size: 13px; }
 .ad-sparkle-dot {
   position: absolute;
@@ -535,7 +539,7 @@ body {
 }
 .ad-update {
   font-family: 'GmarketSans', sans-serif;
-  font-size: 14px; font-weight: 500; color: #f1c40a;
+  font-size: 14px; font-weight: 500; color: #ff5963;
   text-align: center;
 }
 

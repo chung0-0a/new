@@ -138,36 +138,34 @@
 
       <div class="ad-scroll">
         <div class="ad-illustration">
-          <div class="ad-block ad-block-green">
-            <svg width="38" height="30" viewBox="0 0 38 30" fill="white" xmlns="http://www.w3.org/2000/svg">
-              <!-- controller body -->
-              <path d="M6 8 Q2 8 1 14 L3 24 Q4 28 7 28 Q10 28 12 24 L14 18 H24 L26 24 Q28 28 31 28 Q34 28 35 24 L37 14 Q36 8 32 8 Z" fill="white"/>
-              <!-- d-pad vertical -->
-              <rect x="8.5" y="11" width="3" height="9" rx="1" fill="#8bc351"/>
-              <!-- d-pad horizontal -->
-              <rect x="5.5" y="14" width="9" height="3" rx="1" fill="#8bc351"/>
-              <!-- action button circle 1 -->
-              <circle cx="27" cy="13" r="2.2" fill="#8bc351"/>
-              <!-- action button circle 2 -->
-              <circle cx="31" cy="16" r="2.2" fill="#8bc351"/>
-              <!-- action button circle 3 -->
-              <circle cx="27" cy="19" r="2.2" fill="#8bc351"/>
-              <!-- action button circle 4 -->
-              <circle cx="23" cy="16" r="2.2" fill="#8bc351"/>
-              <!-- left bumper -->
-              <rect x="5" y="5" width="9" height="4" rx="2" fill="white"/>
-              <!-- right bumper -->
-              <rect x="24" y="5" width="9" height="4" rx="2" fill="white"/>
+          <!-- 빛나는 점들 -->
+          <div class="ad-sparkle-dot" style="top:0;left:57px;background:#ff59c8;width:13px;height:13px;"></div>
+          <div class="ad-sparkle-dot" style="top:7px;left:173px;background:#8bc351;width:16px;height:16px;"></div>
+          <div class="ad-sparkle-dot" style="top:18px;left:186px;background:#ff7359;width:13px;height:13px;"></div>
+          <div class="ad-sparkle-dot" style="top:43px;left:0;background:#8bc351;width:13px;height:13px;"></div>
+          <div class="ad-sparkle-dot" style="bottom:48px;right:0;background:#ddd;width:13px;height:13px;"></div>
+          <!-- 왼쪽: 초록 카드 (게임컨트롤러) -->
+          <div class="ad-card ad-card-green">
+            <svg width="34" height="26" viewBox="0 0 34 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 7 Q1 7 0.5 13 L2 22 Q3 26 6 26 Q9 26 11 22 L12.5 16.5 H21.5 L23 22 Q25 26 28 26 Q31 26 32 22 L33.5 13 Q33 7 30 7 Z" fill="white"/>
+              <rect x="7" y="10" width="2.5" height="7.5" rx="1" fill="#8bc351"/>
+              <rect x="4.5" y="12.5" width="7.5" height="2.5" rx="1" fill="#8bc351"/>
+              <circle cx="24.5" cy="11" r="1.8" fill="#8bc351"/>
+              <circle cx="27.5" cy="14" r="1.8" fill="#8bc351"/>
+              <circle cx="24.5" cy="17" r="1.8" fill="#8bc351"/>
+              <circle cx="21.5" cy="14" r="1.8" fill="#8bc351"/>
+              <rect x="4" y="4" width="8" height="3.5" rx="2" fill="white"/>
+              <rect x="22" y="4" width="8" height="3.5" rx="2" fill="white"/>
             </svg>
           </div>
-          <div class="ad-block ad-block-orange ad-block-tall"><span class="ad-block-text">Ad</span></div>
-          <div class="ad-block ad-block-pink">
+          <!-- 가운데: 주황 카드 (Ad, 제일 키 큼) -->
+          <div class="ad-card ad-card-orange">
+            <span class="ad-block-text">Ad</span>
+          </div>
+          <!-- 오른쪽: 핑크 카드 (불꽃 아이콘) -->
+          <div class="ad-card ad-card-pink">
             <div style="width:37px;height:37px;background:white;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/813f1399-343a-476f-a1c7-88d9057ea443');mask-image:url('https://www.figma.com/api/mcp/asset/813f1399-343a-476f-a1c7-88d9057ea443');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
           </div>
-          <div class="ad-sparkle-dot" style="top:0;left:30px;background:#ff59c8;"></div>
-          <div class="ad-sparkle-dot" style="top:7px;right:20px;background:#8bc351;width:16px;height:16px;"></div>
-          <div class="ad-sparkle-dot" style="bottom:5px;left:10px;background:#8bc351;"></div>
-          <div class="ad-sparkle-dot" style="bottom:10px;right:5px;background:#ddd;"></div>
         </div>
         <div class="ad-title-row">
           <p class="ad-title">TRUTH OR DARE</p>
@@ -226,7 +224,7 @@
             src="https://www.figma.com/api/mcp/asset/6919e73e-15e3-4a7f-8a64-754df6ae46e4" alt="모드">
           <img class="sun-icon icon-dark"
             src="https://www.figma.com/api/mcp/asset/1dfc95ca-0fbc-48ad-8539-cc99ab8962f8" alt="모드">
-          <button id="theme-toggle" class="toggle-btn" onclick="App.toggleTheme()" aria-label="다크/라이트 모드">
+          <button id="theme-toggle" class="toggle-btn active" onclick="App.toggleTheme()" aria-label="다크/라이트 모드">
             <span class="toggle-knob"></span>
           </button>
         </div>
@@ -327,7 +325,7 @@
               onkeydown="if(event.key==='Enter') App.addPlayer()">
             <!-- 빨간 + 버튼 -->
             <button class="setup-add-btn" onclick="App.addPlayer()">
-              <div style="width:28px;height:28px;background:white;border-radius:8px;display:flex;align-items:center;justify-content:center;">
+              <div style="width:28px;height:28px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;">
                 <div style="width:14px;height:14px;background:#ff5963;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/66929f2e-45cb-42f1-b096-d9d04a4d183d');mask-image:url('https://www.figma.com/api/mcp/asset/66929f2e-45cb-42f1-b096-d9d04a4d183d');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
               </div>
             </button>
