@@ -72,7 +72,7 @@ const App = {
   currentPlayerIndex: 0,
   currentMode: 'dare',
   currentLevel: 'normal',
-  isDarkTheme: true,
+  isDarkTheme: false,
   obIndex: 0,
 
   _usedTruth: new Set(),
@@ -86,28 +86,51 @@ const App = {
   },
 
   /* ── Onboarding Carousel ── */
-  obGo(targetIndex, direction) {
-    const screens = ['screen-ob1', 'screen-ob2', 'screen-ob3'];
-    const currentId = screens[this.obIndex];
-    const targetId  = screens[targetIndex];
+  _obAnimating: false,
 
-    if (currentId === targetId) return;
+  obGo(targetIndex, direction) {
+    if (this._obAnimating || this.obIndex === targetIndex) return;
+
+    const slides = ['ob-slide-0', 'ob-slide-1', 'ob-slide-2'];
+    const currentSlide = document.getElementById(slides[this.obIndex]);
+    const targetSlide  = document.getElementById(slides[targetIndex]);
 
     const outClass = direction === 'left'  ? 'ob-anim-out-left'  : 'ob-anim-out-right';
     const inClass  = direction === 'left'  ? 'ob-anim-in-right'  : 'ob-anim-in-left';
 
-    const currentEl = document.getElementById(currentId);
-    const targetEl  = document.getElementById(targetId);
+    // 네비/도트/버튼 즉시 업데이트 (애니메이션과 무관하게 고정)
+    document.getElementById('ob-back').style.visibility = targetIndex > 0 ? 'visible' : 'hidden';
+    document.querySelectorAll('#ob-dots .dot').forEach((d, i) => {
+      d.classList.toggle('active', i === targetIndex);
+    });
+    document.getElementById('ob-next-btn').textContent = targetIndex === 2 ? '시작하기' : '다음';
 
-    // Show target and animate both
-    targetEl.classList.add('active', inClass);
-    currentEl.classList.add(outClass);
+    // 슬라이드만 애니메이션
+    this._obAnimating = true;
+    this.obIndex = targetIndex;
+
+    targetSlide.classList.add('active', inClass);
+    currentSlide.classList.add(outClass);
 
     setTimeout(() => {
-      currentEl.classList.remove('active', outClass);
-      targetEl.classList.remove(inClass);
-      this.obIndex = targetIndex;
+      currentSlide.classList.remove('active', outClass);
+      targetSlide.classList.remove(inClass);
+      this._obAnimating = false;
     }, 380);
+  },
+
+  obNext() {
+    if (this.obIndex < 2) {
+      this.obGo(this.obIndex + 1, 'left');
+    } else {
+      this.go('screen-ad');
+    }
+  },
+
+  obPrev() {
+    if (this.obIndex > 0) {
+      this.obGo(this.obIndex - 1, 'right');
+    }
   },
 
   /* ── Level Selection ── */
@@ -129,11 +152,7 @@ const App = {
 
     const btn = document.getElementById('theme-toggle');
     btn.classList.toggle('active', !this.isDarkTheme);
-
-    // moon icon = dark mode, sun icon = light mode
-    document.querySelector('.sun-icon').src = this.isDarkTheme
-      ? 'https://www.figma.com/api/mcp/asset/99646c9c-247b-4ea6-84b4-3c165e0cef1c'
-      : 'https://www.figma.com/api/mcp/asset/eb0b002c-a0d3-4b06-a9cc-b1ef337948ce';
+    // icon swap handled by CSS: .icon-light/.icon-dark toggled via data-theme
   },
 
   /* ── Player Management ── */
@@ -169,7 +188,9 @@ const App = {
       item.className = 'player-item';
       item.innerHTML = `
         <span>${this._esc(name)}</span>
-        <button class="btn-delete" onclick="App.removePlayer(${i})" aria-label="삭제">🗑</button>
+        <button class="btn-delete" onclick="App.removePlayer(${i})" aria-label="삭제">
+          <div style="width:20px;height:20px;background:#ff5963;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/a67c05eb-d79d-48ba-bb10-3dac7cb4d289');mask-image:url('https://www.figma.com/api/mcp/asset/a67c05eb-d79d-48ba-bb10-3dac7cb4d289');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
+        </button>
       `;
       list.appendChild(item);
     });
@@ -234,8 +255,20 @@ const App = {
       const item = document.createElement('div');
       item.className = 'result-item';
       item.innerHTML = `
-        <span class="result-name">${this._esc(name)}</span>
-        <span class="result-stats">Truth ${s.truth} · Dare ${s.dare}</span>
+        <div class="result-left">
+          <div class="result-icon"></div>
+          <span class="result-name">${this._esc(name)}</span>
+        </div>
+        <div class="result-right">
+          <div class="result-stat">
+            <div class="result-truth-icon"></div>
+            <span class="result-stat-label">Truth ${s.truth}</span>
+          </div>
+          <div class="result-stat">
+            <div class="result-dare-icon"></div>
+            <span class="result-stat-label">Dare ${s.dare}</span>
+          </div>
+        </div>
       `;
       list.appendChild(item);
     });
@@ -297,35 +330,24 @@ const App = {
 
 /* ===== ONBOARDING SWIPE ===== */
 (function initObSwipe() {
-  const screens = ['screen-ob1', 'screen-ob2', 'screen-ob3'];
   let startX = 0, startY = 0;
+  const el = document.getElementById('screen-ob');
 
-  screens.forEach((id, idx) => {
-    const el = document.getElementById(id);
+  el.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  }, { passive: true });
 
-    el.addEventListener('touchstart', e => {
-      startX = e.touches[0].clientX;
-      startY = e.touches[0].clientY;
-    }, { passive: true });
+  el.addEventListener('touchend', e => {
+    const dx = startX - e.changedTouches[0].clientX;
+    const dy = Math.abs(startY - e.changedTouches[0].clientY);
 
-    el.addEventListener('touchend', e => {
-      const dx = startX - e.changedTouches[0].clientX;
-      const dy = Math.abs(startY - e.changedTouches[0].clientY);
+    if (Math.abs(dx) < 50 || dy > Math.abs(dx)) return;
 
-      // Only react to horizontal swipes (not vertical scroll)
-      if (Math.abs(dx) < 50 || dy > Math.abs(dx)) return;
-
-      if (dx > 0) {
-        // Swipe left → go forward
-        if (App.obIndex < 2) App.obGo(App.obIndex + 1, 'left');
-        else App.go('screen-ad'); // last screen → go to ad
-      } else {
-        // Swipe right → go back
-        if (App.obIndex > 0) App.obGo(App.obIndex - 1, 'right');
-      }
-    }, { passive: true });
-  });
+    if (dx > 0) App.obNext();
+    else App.obPrev();
+  }, { passive: true });
 })();
 
 /* ===== SPLASH AUTO-TRANSITION ===== */
-setTimeout(() => App.go('screen-ob1'), 2000);
+setTimeout(() => App.go('screen-ob'), 2000);

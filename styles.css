@@ -22,35 +22,6 @@
   src: url('./fonts/GmarketSansLight.woff2') format('woff2');
 }
 
-/* Pretendard — local subset files */
-@font-face {
-  font-family: 'Pretendard';
-  font-weight: 700;
-  font-style: normal;
-  font-display: block;
-  src: url('./fonts/Pretendard-Bold.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Pretendard';
-  font-weight: 500;
-  font-style: normal;
-  font-display: block;
-  src: url('./fonts/Pretendard-Medium.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Pretendard';
-  font-weight: 400;
-  font-style: normal;
-  font-display: block;
-  src: url('./fonts/Pretendard-Regular.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Pretendard';
-  font-weight: 300;
-  font-style: normal;
-  font-display: block;
-  src: url('./fonts/Pretendard-Regular.woff2') format('woff2');
-}
 
 /* ===== RESET ===== */
 *, *::before, *::after {
@@ -67,7 +38,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  font-family: 'Pretendard', 'GmarketSans', 'Apple SD Gothic Neo', sans-serif;
+  font-family: 'GmarketSans', 'Apple SD Gothic Neo', sans-serif;
 }
 
 /* ===== APP WRAPPER ===== */
@@ -120,10 +91,11 @@ body {
   from { opacity: 1; transform: translateX(0); }
   to   { opacity: 0; transform: translateX(60px); }
 }
-.ob-anim-in-right  { animation: obSlideInRight  0.35s cubic-bezier(0.25,0.1,0.25,1) forwards; }
-.ob-anim-in-left   { animation: obSlideInLeft   0.35s cubic-bezier(0.25,0.1,0.25,1) forwards; }
-.ob-anim-out-left  { animation: obSlideOutLeft  0.35s cubic-bezier(0.25,0.1,0.25,1) forwards; }
-.ob-anim-out-right { animation: obSlideOutRight 0.35s cubic-bezier(0.25,0.1,0.25,1) forwards; }
+/* 슬라이드에 적용되는 전환 애니메이션 */
+.ob-slide.ob-anim-in-right  { display: flex; animation: obSlideInRight  0.35s cubic-bezier(0.25,0.1,0.25,1) forwards; }
+.ob-slide.ob-anim-in-left   { display: flex; animation: obSlideInLeft   0.35s cubic-bezier(0.25,0.1,0.25,1) forwards; }
+.ob-slide.ob-anim-out-left  { display: flex; animation: obSlideOutLeft  0.35s cubic-bezier(0.25,0.1,0.25,1) forwards; }
+.ob-slide.ob-anim-out-right { display: flex; animation: obSlideOutRight 0.35s cubic-bezier(0.25,0.1,0.25,1) forwards; }
 
 .screen-inner {
   width: 100%;
@@ -135,21 +107,46 @@ body {
 .screen-inner.white { background: #ffffff; }
 .screen-inner.dark  { background: #1a1a1a; }
 
-/* Dark/light mode on game + results */
-[data-theme="light"] #game-inner    { background: #f9f9f9; }
-[data-theme="light"] #results-inner { background: #f9f9f9; }
-[data-theme="light"] .game-title, [data-theme="light"] .game-subtitle,
-[data-theme="light"] #game-player-name, [data-theme="light"] #game-question { color: #333; }
-[data-theme="light"] .game-card { border-color: rgba(0,0,0,0.1); }
-[data-theme="light"] .card-player-row { color: #999; }
-[data-theme="light"] .card-player-icon { opacity: 0.5; }
-[data-theme="light"] .btn-home { border-color: rgba(0,0,0,0.2); }
-[data-theme="light"] .btn-home img { filter: invert(1) brightness(0); }
-[data-theme="light"] .results-title { color: #333; }
-[data-theme="light"] .result-item { background: rgba(0,0,0,0.05); }
-[data-theme="light"] .result-name { color: #333; }
-[data-theme="light"] .result-stats { color: #888; }
-[data-theme="light"] .btn-end { background: rgba(0,0,0,0.08); color: #333; }
+/* game inner: nav/content/footer 구조 — game-content가 flex:1로 중앙 정렬 */
+.game-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ── Light mode: game screen ── */
+[data-theme="light"] #game-inner    { background: #ffffff; }
+[data-theme="light"] .game-title    { color: #ff5963; }
+[data-theme="light"] .game-subtitle { color: #ff5963; }
+[data-theme="light"] #game-player-name { color: rgba(255,89,99,0.7); }
+[data-theme="light"] #game-question { color: #ff5963; }
+[data-theme="light"] .game-card     { border-color: #ff5963; background: #fff; }
+[data-theme="light"] .card-player-row { color: #ff5963; }
+[data-theme="light"] .card-player-icon { background: #ff5963; }
+[data-theme="light"] .btn-home      { border-color: #ff5963; }
+[data-theme="light"] .btn-home img  { filter: brightness(0) saturate(100%) invert(42%) sepia(87%) saturate(500%) hue-rotate(310deg); }
+/* 라이트모드 뒤로가기: 흰 아이콘 → 빨간 아이콘 */
+[data-theme="light"] #game-inner .btn-back img { filter: brightness(0) saturate(100%) invert(42%) sepia(87%) saturate(500%) hue-rotate(310deg); }
+[data-theme="light"] .tab.truth     { background: rgba(139,195,81,0.12); }
+[data-theme="light"] .tab.truth.active { background: #8bc351; color: #fff; }
+[data-theme="light"] .tab.dare      { background: rgba(255,89,99,0.1); color: #ff5963; }
+[data-theme="light"] .tab.dare.active  { background: #ff5963; color: #fff; }
+/* ── Dark mode: game screen ── */
+[data-theme="dark"] .btn-home      { border-color: #ff5963; }
+[data-theme="dark"] .btn-home img  { filter: brightness(0) saturate(100%) invert(42%) sepia(87%) saturate(500%) hue-rotate(310deg); }
+/* ── Light mode: results screen ── */
+[data-theme="light"] #results-inner { background: #ffffff; }
+[data-theme="light"] #results-inner .btn-back.inverted img { filter: brightness(0) saturate(100%) invert(42%) sepia(87%) saturate(500%) hue-rotate(310deg); }
+[data-theme="light"] .results-title { color: #ff5963; }
+[data-theme="light"] .result-item   { background: #ff5963; }
+[data-theme="light"] .result-name   { color: #ffffff; }
+[data-theme="light"] .result-icon   { background: rgba(255,255,255,0.9); }
+[data-theme="light"] .result-truth-icon { background: rgba(255,255,255,0.9); }
+[data-theme="light"] .result-dare-icon  { background: rgba(255,255,255,0.9); }
+[data-theme="light"] .result-stat-label { color: rgba(255,255,255,0.85); }
+[data-theme="light"] .btn-end       { background: transparent; border: 2px solid #8bc351; color: #8bc351; }
+[data-theme="light"] .btn-again     { background: #ff5963; border: none; color: #ffffff; }
 
 /* ===== SPLASH ===== */
 #screen-splash { background: #ff5963; }
@@ -162,7 +159,25 @@ body {
   justify-content: center;
   gap: 16px;
 }
-.splash-logo { width: 120px; height: 120px; object-fit: contain; }
+.splash-logo { width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; }
+.splash-logo::before { content: '?!'; width: 80px; height: 80px; background: #ff5963; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-family: 'GmarketSans', sans-serif; font-size: 36px; font-weight: 700; color: white; }
+.splash-loading {
+  width: 120px; height: 4px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.splash-progress {
+  height: 100%; width: 0%;
+  background: #ffffff;
+  border-radius: 2px;
+  animation: splashLoad 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes splashLoad {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
 .splash-title {
   font-family: 'GmarketSans', sans-serif;
   font-size: 65px;
@@ -244,16 +259,24 @@ body {
 /* Skip button on dark backgrounds */
 .screen-inner.dark .btn-skip { color: rgba(255,255,255,0.65); }
 
-/* ===== ONBOARDING BODY ===== */
-.ob-body {
+/* ===== ONBOARDING VIEWPORT (슬라이드 영역) ===== */
+.ob-viewport {
   flex: 1;
-  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+.ob-slide {
+  position: absolute;
+  inset: 0;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 40px;
   padding: 16px 20px;
-  overflow: hidden;
+}
+.ob-slide.active {
+  display: flex;
 }
 
 /* ===== AVATAR GRID (OB1) ===== */
@@ -289,7 +312,7 @@ body {
   letter-spacing: -0.4px;
 }
 .ob-desc {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 14px;
   font-weight: 500;
   color: #666666;
@@ -346,10 +369,10 @@ body {
   background: #ffffff;
   border-radius: 10px;
   padding: 0 18px;
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #aaa;
+  color: #999;
   display: flex;
   align-items: center;
 }
@@ -359,6 +382,7 @@ body {
   border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
+  position: relative;
 }
 .ob2-add-btn img { width: 24px; height: 24px; object-fit: contain; }
 
@@ -379,7 +403,12 @@ body {
 .ob2-player-faded { opacity: 0.35; }
 
 /* ===== ONBOARDING 3 — MODE DEMO (dark bg) ===== */
-.ob3-mode-cards { display: flex; gap: 15px; }
+.ob3-demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ob3-mode-cards { display: flex; gap: 5px; }
 .ob3-card {
   width: 130px; height: 130px;
   background: #ffffff;
@@ -391,8 +420,16 @@ body {
   box-shadow: 0 1px 21.5px rgba(0,0,0,0.05);
 }
 .ob3-card.selected { border-color: #ff5963; }
-.ob3-truth-icon { width: 41px; height: 41px; object-fit: contain; }
-.ob3-star-icon { width: 38px; height: 38px; object-fit: contain; }
+.ob3-truth-icon {
+  width: 41px; height: 41px;
+  background: #ff5963;
+  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/d05c76a5-6465-4296-907c-703143bae7ac');
+  mask-image: url('https://www.figma.com/api/mcp/asset/d05c76a5-6465-4296-907c-703143bae7ac');
+  -webkit-mask-size: contain; mask-size: contain;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center; mask-position: center;
+}
+.ob3-star-icon { width: 43px; height: 43px; object-fit: contain; }
 .ob3-label {
   font-family: 'GmarketSans', sans-serif;
   font-size: 17px;
@@ -401,6 +438,29 @@ body {
   color: #c0c0c0;
 }
 .ob3-label.selected { color: #ff5963; }
+.ob3-inner-dots {
+  display: flex;
+  gap: 8px;
+  margin-top: 25px;
+}
+.ob3-inner-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: #c8c8c8;
+}
+.ob3-start-btn {
+  width: 265px; height: 56px;
+  background: #ff5963;
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: 'GmarketSans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: -0.32px;
+  margin-top: 25px;
+}
 
 /* ===== AD / PREMIUM SCREEN ===== */
 .ad-scroll {
@@ -436,6 +496,11 @@ body {
 }
 .ad-block-tall { margin-bottom: 0; }
 .ad-sparkle { position: absolute; font-size: 13px; }
+.ad-sparkle-dot {
+  position: absolute;
+  width: 13px; height: 13px;
+  border-radius: 50%;
+}
 
 .ad-title-row {
   display: flex; align-items: center; gap: 8px;
@@ -461,7 +526,7 @@ body {
   text-align: center; letter-spacing: -0.28px;
 }
 .ad-update {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 14px; font-weight: 500; color: #f1c40a;
   text-align: center;
 }
@@ -480,7 +545,7 @@ body {
   letter-spacing: -0.32px;
 }
 .plan-desc {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 12px; font-weight: 500; color: #666;
   margin-top: 7px;
 }
@@ -490,7 +555,7 @@ body {
   text-align: right;
 }
 .plan-period {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 12px; font-weight: 500; color: #666;
 }
 
@@ -517,22 +582,23 @@ body {
 .benefit-emoji { font-size: 48px; }
 .benefit-info {
   height: 56px;
-  padding: 10px 14px;
-  display: flex; flex-direction: column; gap: 4px;
+  padding: 14px;
+  display: flex; align-items: center;
   position: relative;
+  border-radius: 0 0 10px 10px;
 }
 .benefit-name {
   font-family: 'GmarketSans', sans-serif;
   font-size: 14px; font-weight: 700; color: white;
 }
 .benefit-desc {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.85);
 }
 
 .ad-skip-btn {
   background: none; border: none;
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 13px; font-weight: 500;
   color: #bbb; cursor: pointer;
   padding: 8px 0;
@@ -554,6 +620,9 @@ body {
   height: 44px;
 }
 .sun-icon { width: 24px; height: 24px; object-fit: contain; }
+/* light mode = sun, dark mode = moon — both images pre-loaded, CSS toggles visibility */
+[data-theme="light"] .icon-dark  { display: none; }
+[data-theme="dark"]  .icon-light { display: none; }
 
 /* iOS-style toggle */
 .toggle-btn {
@@ -586,28 +655,32 @@ body {
   overflow: hidden;
 }
 
-/* Question / Exclamation illustration cards */
-.level-illus { display: flex; gap: 4px; align-items: center; }
+/* ?! 카드 일러스트 */
+.level-illus { display: flex; align-items: center; justify-content: center; height: 90px; }
+.illus-cards {
+  position: relative;
+  width: 160px; height: 90px;
+}
 .illus-card {
-  width: 112px; height: 74px;
-  border-radius: 10px;
+  position: absolute;
+  width: 68px; height: 80px;
+  border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
-}
-.illus-card span {
   font-family: 'GmarketSans', sans-serif;
-  font-size: 40px; font-weight: 700; color: white;
-  display: inline-block;
+  font-size: 40px; font-weight: 700;
+  color: white;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
 }
-.card-q {
+.illus-q {
   background: #ff5963;
-  transform: rotate(-3deg);
-  margin-right: -6px;
+  transform: rotate(-10deg);
+  left: 14px; bottom: 0;
   z-index: 1;
 }
-.card-q span { transform: rotate(-5deg); }
-.card-excl {
-  background: #ff7359;
-  transform: rotate(3deg);
+.illus-ex {
+  background: #ffb3b6;
+  transform: rotate(6deg);
+  right: 14px; bottom: 0;
 }
 
 /* legacy alias */
@@ -631,7 +704,7 @@ body {
   letter-spacing: -0.5px;
 }
 .level-sub {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 16px; font-weight: 500; color: #ff5963;
   margin-top: 4px; letter-spacing: -0.5px;
 }
@@ -670,7 +743,7 @@ body {
   line-height: 22px; letter-spacing: -0.5px;
 }
 .level-desc {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 13px; font-weight: 500;
   letter-spacing: -0.5px; margin-top: 4px;
 }
@@ -698,7 +771,7 @@ body {
   line-height: 22px;
 }
 .banner-desc {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.85);
 }
 
@@ -728,7 +801,7 @@ body {
   text-align: center; letter-spacing: -0.5px;
 }
 .setup-subtitle {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 16px; font-weight: 500; color: #ff5963;
   text-align: center; letter-spacing: -0.5px;
 }
@@ -800,7 +873,7 @@ body {
 .game-header {
   flex-shrink: 0;
   display: flex; flex-direction: column;
-  align-items: center; gap: 12px;
+  align-items: center; gap: 13px;
   padding: 16px 20px 12px;
 }
 .game-title {
@@ -809,8 +882,8 @@ body {
   letter-spacing: -0.5px; text-align: center;
 }
 .game-subtitle {
-  font-family: 'Pretendard', sans-serif;
-  font-size: 15px; font-weight: 500;
+  font-family: 'GmarketSans', sans-serif;
+  font-size: 16px; font-weight: 500;
   color: rgba(255,255,255,0.75);
   letter-spacing: -0.5px; text-align: center;
 }
@@ -819,39 +892,65 @@ body {
   flex: 1; height: 47px;
   border: none; border-radius: 10px;
   font-family: 'GmarketSans', sans-serif;
-  font-size: 16px; font-weight: 700; color: #ffffff;
+  font-size: 17px; font-weight: 700;
   cursor: pointer; letter-spacing: -0.5px;
   display: flex; align-items: center; justify-content: center;
-  gap: 6px; transition: background 0.2s;
+  gap: 6px; transition: background 0.2s, color 0.2s;
 }
-.tab-icon { width: 20px; height: 20px; object-fit: contain; }
-.tab.truth { background: rgba(139,195,81,0.15); }
-.tab.truth.active { background: #6aab29; }
-.tab.dare { background: rgba(255,89,99,0.2); }
-.tab.dare.active { background: #ff5963; }
+.tab-icon {
+  width: 20px; height: 20px; flex-shrink: 0;
+  -webkit-mask-size: contain; mask-size: contain;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center; mask-position: center;
+}
+.truth-icon {
+  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/d05c76a5-6465-4296-907c-703143bae7ac');
+  mask-image: url('https://www.figma.com/api/mcp/asset/d05c76a5-6465-4296-907c-703143bae7ac');
+}
+.dare-icon {
+  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/303c2429-9641-4057-9b84-d9b2e9674efe');
+  mask-image: url('https://www.figma.com/api/mcp/asset/303c2429-9641-4057-9b84-d9b2e9674efe');
+}
+.tab.truth { background: rgba(139,195,81,0.2); color: #8bc351; }
+.tab.truth .tab-icon { background: #8bc351; }
+.tab.truth.active { background: #8bc351; color: #ffffff; }
+.tab.truth.active .tab-icon { background: #ffffff; }
+.tab.dare { background: rgba(255,89,99,0.2); color: #ff5963; }
+.tab.dare .tab-icon { background: #ff5963; }
+.tab.dare.active { background: #ff5963; color: #ffffff; }
+.tab.dare.active .tab-icon { background: #ffffff; }
 
 /* ===== GAME CARD ===== */
 .game-card {
-  flex: 1; margin: 0 20px;
+  height: 215px; flex-shrink: 0;
+  margin: 0 20px;
   border: 1px solid rgba(255,255,255,0.25);
   border-radius: 10px;
   display: flex; flex-direction: column;
-  padding: 20px; gap: 12px; overflow: hidden;
+  padding: 20px; gap: 10px; overflow: hidden;
 }
 .card-player-row {
-  display: flex; align-items: center; gap: 6px;
+  display: flex; align-items: center; gap: 5px;
   color: rgba(255,255,255,0.6);
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 14px; font-weight: 300;
   letter-spacing: -0.5px; flex-shrink: 0;
 }
-.card-player-icon { width: 18px; height: 18px; object-fit: contain; opacity: 0.6; }
+.card-player-icon {
+  width: 15px; height: 15px; flex-shrink: 0;
+  background: rgba(255,255,255,0.6);
+  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/156b3bec-661a-462c-b4e5-d7b540c80ea8');
+  mask-image: url('https://www.figma.com/api/mcp/asset/156b3bec-661a-462c-b4e5-d7b540c80ea8');
+  -webkit-mask-size: contain; mask-size: contain;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center; mask-position: center;
+}
 
 #game-question {
   flex: 1; display: flex;
   align-items: center; justify-content: center;
   color: #ffffff;
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 16px; font-weight: 500;
   text-align: center; line-height: 1.7;
   letter-spacing: -0.3px; white-space: pre-wrap;
@@ -860,7 +959,7 @@ body {
 /* ===== GAME FOOTER ===== */
 .game-footer {
   flex-shrink: 0; display: flex;
-  gap: 16px; align-items: center;
+  gap: 20px; align-items: center;
   padding: 16px 20px 34px;
 }
 .btn-home {
@@ -886,54 +985,84 @@ body {
 
 /* ===== RESULTS ===== */
 .results-header {
-  flex-shrink: 0; padding: 24px 20px 12px; text-align: center;
+  flex-shrink: 0; padding: 20px 20px 12px; text-align: center;
 }
 .results-title {
   font-family: 'GmarketSans', sans-serif;
-  font-size: 24px; font-weight: 700; color: #ffffff;
+  font-size: 30px; font-weight: 700; color: #ffffff;
   letter-spacing: -0.5px;
 }
 .results-list {
   flex: 1; overflow-y: auto;
   padding: 0 20px;
-  display: flex; flex-direction: column; gap: 8px;
+  display: flex; flex-direction: column; gap: 5px;
 }
 .result-item {
   height: 56px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.9);
   border-radius: 10px;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 18px; flex-shrink: 0;
+  padding: 0 20px; flex-shrink: 0;
+}
+.result-left { display: flex; align-items: center; gap: 6px; }
+.result-icon {
+  width: 17px; height: 17px; flex-shrink: 0;
+  background: rgba(0,0,0,0.5);
+  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/156b3bec-661a-462c-b4e5-d7b540c80ea8');
+  mask-image: url('https://www.figma.com/api/mcp/asset/156b3bec-661a-462c-b4e5-d7b540c80ea8');
+  -webkit-mask-size: contain; mask-size: contain;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center; mask-position: center;
 }
 .result-name {
   font-family: 'GmarketSans', sans-serif;
-  font-size: 15px; font-weight: 700; color: #ffffff;
+  font-size: 18px; font-weight: 500; color: #333;
   letter-spacing: -0.3px;
 }
-.result-stats {
-  font-family: 'Pretendard', sans-serif;
-  font-size: 13px; font-weight: 400;
-  color: rgba(255,255,255,0.6); letter-spacing: -0.2px;
+.result-right { display: flex; align-items: center; gap: 12px; }
+.result-stat { display: flex; align-items: center; gap: 3px; }
+.result-truth-icon {
+  width: 15px; height: 15px; flex-shrink: 0;
+  background: rgba(0,0,0,0.5);
+  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/d05c76a5-6465-4296-907c-703143bae7ac');
+  mask-image: url('https://www.figma.com/api/mcp/asset/d05c76a5-6465-4296-907c-703143bae7ac');
+  -webkit-mask-size: contain; mask-size: contain;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center; mask-position: center;
+}
+.result-dare-icon {
+  width: 20px; height: 20px; flex-shrink: 0;
+  background: rgba(0,0,0,0.5);
+  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/303c2429-9641-4057-9b84-d9b2e9674efe');
+  mask-image: url('https://www.figma.com/api/mcp/asset/303c2429-9641-4057-9b84-d9b2e9674efe');
+  -webkit-mask-size: contain; mask-size: contain;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center; mask-position: center;
+}
+.result-stat-label {
+  font-family: 'GmarketSans', sans-serif;
+  font-size: 14px; font-weight: 500; color: rgba(0,0,0,0.55);
+  letter-spacing: -0.2px;
 }
 .results-footer {
-  flex-shrink: 0; display: flex;
-  gap: 12px; padding: 16px 20px 34px;
+  flex-shrink: 0; display: flex; flex-direction: column;
+  gap: 13px; padding: 16px 20px 34px;
 }
 .btn-end {
-  flex: 1; height: 56px;
-  background: rgba(255,255,255,0.12); border: none; border-radius: 10px;
+  width: 100%; height: 56px;
+  background: #8bc351; border: none; border-radius: 10px;
   color: #ffffff;
   font-family: 'GmarketSans', sans-serif;
-  font-size: 15px; font-weight: 700;
+  font-size: 16px; font-weight: 700;
   cursor: pointer; transition: opacity 0.15s;
 }
 .btn-end:active { opacity: 0.85; }
 .btn-again {
-  flex: 1; height: 56px;
-  background: #ff5963; border: none; border-radius: 10px;
-  color: #ffffff;
+  width: 100%; height: 56px;
+  background: rgba(255,255,255,0.88); border: none; border-radius: 10px;
+  color: #ff5963;
   font-family: 'GmarketSans', sans-serif;
-  font-size: 15px; font-weight: 700;
+  font-size: 16px; font-weight: 700;
   cursor: pointer; transition: opacity 0.15s;
 }
 .btn-again:active { opacity: 0.85; }
@@ -951,7 +1080,7 @@ body {
   text-align: center; display: flex; flex-direction: column; gap: 16px;
 }
 .modal-msg {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'GmarketSans', sans-serif;
   font-size: 15px; font-weight: 500; color: #333;
   line-height: 1.5; letter-spacing: -0.3px;
 }
@@ -994,7 +1123,7 @@ body {
 [data-theme="dark"] .level-card .level-name,
 [data-theme="dark"] .level-card .level-desc { color: white !important; }
 [data-theme="dark"] .level-card .level-icon { background: white !important; }
-[data-theme="dark"] .level-card.hard .lock-icon { background: white !important; }
+[data-theme="dark"] .level-card .lock-icon  { background: white !important; }
 
 /* Setup: title, input, player list, back button */
 [data-theme="dark"] .setup-title,
