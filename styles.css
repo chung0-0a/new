@@ -159,7 +159,8 @@ body {
   justify-content: center;
   gap: 16px;
 }
-.splash-logo { width: 120px; height: 120px; object-fit: contain; }
+.splash-logo { width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; }
+.splash-logo::before { content: '?!'; width: 80px; height: 80px; background: #ff5963; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-family: 'GmarketSans', sans-serif; font-size: 36px; font-weight: 700; color: white; }
 .splash-loading {
   width: 120px; height: 4px;
   background: rgba(255,255,255,0.3);
@@ -422,8 +423,8 @@ body {
 .ob3-truth-icon {
   width: 41px; height: 41px;
   background: #ff5963;
-  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/a1671351-1cd8-4b48-8453-9fc297184db5');
-  mask-image: url('https://www.figma.com/api/mcp/asset/a1671351-1cd8-4b48-8453-9fc297184db5');
+  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/d05c76a5-6465-4296-907c-703143bae7ac');
+  mask-image: url('https://www.figma.com/api/mcp/asset/d05c76a5-6465-4296-907c-703143bae7ac');
   -webkit-mask-size: contain; mask-size: contain;
   -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
   -webkit-mask-position: center; mask-position: center;
@@ -903,12 +904,12 @@ body {
   -webkit-mask-position: center; mask-position: center;
 }
 .truth-icon {
-  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/a1671351-1cd8-4b48-8453-9fc297184db5');
-  mask-image: url('https://www.figma.com/api/mcp/asset/a1671351-1cd8-4b48-8453-9fc297184db5');
+  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/d05c76a5-6465-4296-907c-703143bae7ac');
+  mask-image: url('https://www.figma.com/api/mcp/asset/d05c76a5-6465-4296-907c-703143bae7ac');
 }
 .dare-icon {
-  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/887d8f36-2dcd-493f-890e-13cd91e96727');
-  mask-image: url('https://www.figma.com/api/mcp/asset/887d8f36-2dcd-493f-890e-13cd91e96727');
+  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/303c2429-9641-4057-9b84-d9b2e9674efe');
+  mask-image: url('https://www.figma.com/api/mcp/asset/303c2429-9641-4057-9b84-d9b2e9674efe');
 }
 .tab.truth { background: rgba(139,195,81,0.2); color: #8bc351; }
 .tab.truth .tab-icon { background: #8bc351; }
@@ -938,8 +939,8 @@ body {
 .card-player-icon {
   width: 15px; height: 15px; flex-shrink: 0;
   background: rgba(255,255,255,0.6);
-  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/8e6c27bd-56d2-4bdb-a5a1-e3bfba0df864');
-  mask-image: url('https://www.figma.com/api/mcp/asset/8e6c27bd-56d2-4bdb-a5a1-e3bfba0df864');
+  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/156b3bec-661a-462c-b4e5-d7b540c80ea8');
+  mask-image: url('https://www.figma.com/api/mcp/asset/156b3bec-661a-462c-b4e5-d7b540c80ea8');
   -webkit-mask-size: contain; mask-size: contain;
   -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
   -webkit-mask-position: center; mask-position: center;
@@ -1007,8 +1008,8 @@ body {
 .result-icon {
   width: 17px; height: 17px; flex-shrink: 0;
   background: rgba(0,0,0,0.5);
-  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/8e6c27bd-56d2-4bdb-a5a1-e3bfba0df864');
-  mask-image: url('https://www.figma.com/api/mcp/asset/8e6c27bd-56d2-4bdb-a5a1-e3bfba0df864');
+  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/156b3bec-661a-462c-b4e5-d7b540c80ea8');
+  mask-image: url('https://www.figma.com/api/mcp/asset/156b3bec-661a-462c-b4e5-d7b540c80ea8');
   -webkit-mask-size: contain; mask-size: contain;
   -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
   -webkit-mask-position: center; mask-position: center;
@@ -1023,8 +1024,8 @@ body {
 .result-truth-icon {
   width: 15px; height: 15px; flex-shrink: 0;
   background: rgba(0,0,0,0.5);
-  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/a1671351-1cd8-4b48-8453-9fc297184db5');
-  mask-image: url('https://www.figma.com/api/mcp/asset/a1671351-1cd8-4b48-8453-9fc297184db5');
+  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/d05c76a5-6465-4296-907c-703143bae7ac');
+  mask-image: url('https://www.figma.com/api/mcp/asset/d05c76a5-6465-4296-907c-703143bae7ac');
   -webkit-mask-size: contain; mask-size: contain;
   -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
   -webkit-mask-position: center; mask-position: center;
@@ -1032,8 +1033,8 @@ body {
 .result-dare-icon {
   width: 20px; height: 20px; flex-shrink: 0;
   background: rgba(0,0,0,0.5);
-  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/887d8f36-2dcd-493f-890e-13cd91e96727');
-  mask-image: url('https://www.figma.com/api/mcp/asset/887d8f36-2dcd-493f-890e-13cd91e96727');
+  -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/303c2429-9641-4057-9b84-d9b2e9674efe');
+  mask-image: url('https://www.figma.com/api/mcp/asset/303c2429-9641-4057-9b84-d9b2e9674efe');
   -webkit-mask-size: contain; mask-size: contain;
   -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
   -webkit-mask-position: center; mask-position: center;

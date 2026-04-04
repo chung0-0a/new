@@ -189,7 +189,7 @@ const App = {
       item.innerHTML = `
         <span>${this._esc(name)}</span>
         <button class="btn-delete" onclick="App.removePlayer(${i})" aria-label="삭제">
-          <div style="width:20px;height:20px;background:#ff5963;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/b11a72a2-dba1-461a-a2f6-5af6791b62b9');mask-image:url('https://www.figma.com/api/mcp/asset/b11a72a2-dba1-461a-a2f6-5af6791b62b9');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
+          <div style="width:20px;height:20px;background:#ff5963;-webkit-mask-image:url('https://www.figma.com/api/mcp/asset/a67c05eb-d79d-48ba-bb10-3dac7cb4d289');mask-image:url('https://www.figma.com/api/mcp/asset/a67c05eb-d79d-48ba-bb10-3dac7cb4d289');-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;"></div>
         </button>
       `;
       list.appendChild(item);
