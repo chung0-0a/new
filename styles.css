@@ -159,8 +159,16 @@ body {
   justify-content: center;
   gap: 16px;
 }
-.splash-logo { width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; }
-.splash-logo::before { content: '?!'; width: 80px; height: 80px; background: #ff5963; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-family: 'GmarketSans', sans-serif; font-size: 36px; font-weight: 700; color: white; }
+.splash-logo {
+  width: 80px; height: 80px;
+  background: #ff5963;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'GmarketSans', sans-serif;
+  font-size: 36px; font-weight: 700;
+  color: white;
+  letter-spacing: 2px;
+}
 .splash-loading {
   width: 120px; height: 4px;
   background: rgba(255,255,255,0.3);
